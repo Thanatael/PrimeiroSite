@@ -37,3 +37,14 @@ header {
   text-align: center;
   color: #383838;
 }
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerBtnGroup {
+  display: flex;
+  gap: 15px;
+}
