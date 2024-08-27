@@ -48,3 +48,7 @@ header {
   display: flex;
   gap: 15px;
 }
+
+body {
+  background-color: red;
+}
