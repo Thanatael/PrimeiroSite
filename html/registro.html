@@ -5,17 +5,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="../css/login.css">
+  <title>Registro</title>
+  <link rel="stylesheet" href="../css/registro.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/temaescuro.css">
   <link rel="stylesheet" href="../css/validacao.css">
 
-
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=jpicoPLk5nyMlLu9gVvJjtAm5z3yCWpr3iJs9vGAuEFuwUda0zZ41wSWz8gjRHARDu1aJsk10FfU32y9VwH8-KBXmZnJKS4pYHnSNvB_4zQ25pamwpZp560zI2QJv1s6fM4jE3PnktC6jdLPtdFNAA" charset="UTF-8"></script><script src="scripts/header.js" defer></script>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=b6dYw9U-yIXmU-2G_Sc6ebxpq10-7o44ym_HFFwItOIzDZ9pRnRdZnY2xFvvZQWiFA2lsD5lQJlgOFVfbLweS3Ci5KNFIJYR3hkppKZTIdGwIrYtgWdjKuclAG-1vSJthVaE6Qhh06ttLCKpPsiQvg" charset="UTF-8"></script><script src="scripts/header.js" defer></script>
   <script src="scripts/validacao.js" defer></script>
-
 </head>
 
 <body>
@@ -42,10 +40,15 @@
         <div class="line"></div>
       </div>
     </header>
-    <section>
+    <section class="main">
       <div class="box-content">
         <form action="">
-          <h1>Faça o seu Login</h1>
+          <h1>Cadastre-se para acompanhar as notícias!</h1>
+          <div class="name">
+            <label for="nome"></label>
+            <input type="text" placeholder="Nome" id="nome" name="nome" >
+            <p id="nome-ajuda" class="msg-ajuda" style="display:none;">Mín. 3 caracteres</p>
+          </div>
           <div class="email">
             <label for="email"></label>
             <input type="text" placeholder="Email" id="email" name="email">
