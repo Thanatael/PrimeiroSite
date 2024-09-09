@@ -1,19 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/temaescuro.css">
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=4Nfuak3IyVUgB5qCzbtlsQFyfvRm1k_t0PitVbCOXHjFbIqcp0S2rbAFJ17aEl1lnHaqA1LuiHmO5okdpHVcNk9OtZbv5uMvyOjN37EOkl7UT-pImPsVKiT2r9nhQZa4" charset="UTF-8"></script><script src="javascript/header.js" defer></script>
-  <title>InfoSports</title>
-</head>
-
 <body>
   <?php $lista = array("link"=>"1", "imagem"=>"2", "titulo"=>"3", "descricao"=>"4"); 
   ?> 
@@ -149,5 +133,3 @@
   <script src="javascript/temaescuro.js"></script>
   <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
 </body>
-
-</html>
