@@ -4,11 +4,11 @@
 
   <div class="container">
     <header class="header">
-      <a class='logo' href='/'>InfoSports</a>
+      <a class='logo' href='principal.php'>InfoSports</a>
       <div class="headerBtnGroup">
-        <button class="navBtn"><a href='html/login.html'>Login</a></button>
-        <button class="navBtn"><a href='html/registro.html'>Registro</a></button>
-        <button class="navBtn"><a href='html/contato.html'>Contato</a></button>
+        <button class="navBtn"><a href='login.php'>Login</a></button>
+        <button class="navBtn"><a href='cadastro.php'>Registro</a></button>
+        <button class="navBtn"><a href='contato.php'>Contato</a></button>
         <div>
           <input type="checkbox" class="check" id="chk"/>
 

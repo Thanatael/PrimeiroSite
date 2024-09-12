@@ -5,14 +5,14 @@
   <link rel="stylesheet" href="css/index.css">
 
   <?php
-    if ($paginaURL ==="contato"):?>
+    if ($paginaUrl === "contato"):?>
     <link rel="stylesheet" href="css/contato.css">
     <!-- <link rel="stylesheet" href="css/validacao-contato.css"> -->
   <?php endif;?>
-  <?php if ($paginaURL === "registro"):?>
+  <?php if ($paginaUrl === "registro"):?>
     <link rel="stylesheet" href="css/registro.css">
   <?php endif;?>
-  <?php if ($paginaURL === "login"):?>
+  <?php if ($paginaUrl === "login"):?>
     <link rel="stylesheet" href="css/login.css">
   <?php endif;?>
 
