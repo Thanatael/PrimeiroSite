@@ -6,9 +6,11 @@
     <header class="header">
       <a class='logo' href='principal.php'>InfoSports</a>
       <div class="headerBtnGroup">
-        <button class="navBtn"><a href='login.php'>Login</a></button>
-        <button class="navBtn"><a href='cadastro.php'>Registro</a></button>
-        <button class="navBtn"><a href='contato.php'>Contato</a></button>
+        <form method="get" action="">
+          <button type="submit" name="pagina" value="login" class="navBtn">Login</button>
+          <button type="submit" name="pagina" value="cadastro" class="navBtn">Registro</button>
+          <button type="submit" name="pagina" value="contato" class="navBtn">Contato</button>
+        </form>
         <div>
           <input type="checkbox" class="check" id="chk"/>
 
