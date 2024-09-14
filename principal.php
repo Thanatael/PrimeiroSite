@@ -3,30 +3,6 @@
   ?> 
 
   <div class="container">
-    <header class="header">
-      <a class='logo' href='principal.php'>InfoSports</a>
-      <div class="headerBtnGroup">
-        <form method="get" action="">
-          <button type="submit" name="pagina" value="login" class="navBtn">Login</button>
-          <button type="submit" name="pagina" value="cadastro" class="navBtn">Registro</button>
-          <button type="submit" name="pagina" value="contato" class="navBtn">Contato</button>
-        </form>
-        <div>
-          <input type="checkbox" class="check" id="chk"/>
-
-          <label class="label" for="chk">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <div class="bola"></div>
-          </label>
-        </div>
-      </div>
-      <div class="hamburguer-menu">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-    </header>
     <p class="sectionTitle" id="backToTop">BEM VINDO A INFOSPORTS!</p>
     <p class="sectionDescription">Aqui é onde você encontra todos os itens mais novos e modernos do seu esporte
       preferido.</p>

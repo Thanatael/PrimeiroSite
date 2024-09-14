@@ -1,13 +1,7 @@
-<body>
-  <div class="container">
+<div class="container">
     <header class="header">
-      <a class='logo' href='../index.html'>InfoSports</a>
+      <a class="logo" href="index.html">InfoSports</a>
       <div class="headerBtnGroup">
-        <form method="get" action="">
-          <button type="submit" name="pagina" value="login" class="navBtn">Login</button>
-          <button type="submit" name="pagina" value="cadastro" class="navBtn">Registro</button>
-          <button type="submit" name="pagina" value="contato" class="navBtn">Contato</button>
-        </form>
         <div>
           <input type="checkbox" class="check" id="chk" />
         
@@ -48,6 +42,3 @@
       <a href="#backToTop" class="footerAnchor">VOLTAR PARA O TOPO</a>
     </footer>
   </div>
-  <script src="scripts/temaescuro.js"></script>
-  <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
-</body>
