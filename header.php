@@ -26,7 +26,7 @@
   <title>InfoSports</title>
 </head>
 
-<body>
+<!-- <body>
 
 <header class="header">
       <a class='logo' href='index.php'>InfoSports</a>
@@ -53,4 +53,4 @@
       </div>
     </header>
 
-</body>
+</body> -->

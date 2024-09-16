@@ -1,5 +1,24 @@
-<body>
-    <div class="body-bg">
+<div class="body-bg">
+        <header class="header">
+            <a class="logo" href="index.html">InfoSports</a>
+            <div class="headerBtnGroup">
+            <?php include_once("menuTopo.php");?>
+                <div>
+                    <input type="checkbox" class="check" id="chk" />
+                
+                    <label class="label" for="chk">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="bola"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="hamburguer-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </header>
         <div class="container-body">
             <div class="container">
                 <div class="title">
@@ -58,7 +77,3 @@
             <a href="#backToTop" class="footerAnchor">VOLTAR PARA O TOPO</a>
         </footer>
     </div>
-    <script src="scripts/temaescuro.js"></script>
-    <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
-
-</body>

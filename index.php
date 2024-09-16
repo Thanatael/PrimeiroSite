@@ -1,5 +1,10 @@
 <?php
 
+include_once("configuracao.php");
+include_once("funcoes.php");
+timeZone();
+$data = dataAtual();
+
 if($_GET && isset($_GET['pagina'])){
     $paginaUrl = $_GET['pagina'];
   }else{

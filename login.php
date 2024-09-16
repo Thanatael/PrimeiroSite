@@ -1,7 +1,8 @@
 <div class="container">
-    <header class="header">
-      <a class="logo" href="index.html">InfoSports</a>
+<header class="header">
+      <a class="logo" href="index.php">InfoSports</a>
       <div class="headerBtnGroup">
+        <?php include_once("menuTopo.php");?>
         <div>
           <input type="checkbox" class="check" id="chk" />
         
