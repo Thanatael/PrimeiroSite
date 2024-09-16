@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="css/validacao-contato.css">
     <?php endif; ?>
     <?php if($paginaUrl === "cadastro"):?>
-        <link rel="stylesheet" href="css/cadastro.css">
+        <link rel="stylesheet" href="css/registro.css">
     <?php endif; ?>
     <?php if($paginaUrl === "login"):?>
         <link rel="stylesheet" href="css/login.css">
