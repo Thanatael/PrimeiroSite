@@ -107,3 +107,12 @@ function reduzirStr($str,$quantidade){
       );
       return $listaNoticia;
   }
+
+  function calcularIMC($peso,$altura){
+    $reposta = 0;
+    if($peso && $altura){
+        $reposta = $peso / ($altura * $altura);
+    }
+    return round($reposta,2);
+  }
+?>
