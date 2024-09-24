@@ -18,7 +18,7 @@ $altura = ($_SERVER["REQUEST_METHOD"] == "POST"
  include_once("configuracao/conexao.php");
  include_once("funcoes.php");
 
- $resposta = calcularImc($peso, $altura);
+ $resposta = round(calcularImc($peso, $altura));
  $classificacao = classificarImc($resposta);
  cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
  

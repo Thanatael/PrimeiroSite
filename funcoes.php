@@ -153,9 +153,7 @@ function reduzirStr($str,$quantidade){
         }elseif($imc >= 18.6 && $imc<= 24.9){
             return "Peso Ideal";
         }elseif($imc >= 25 && $imc <= 29.9 ){
-             "Sreturnobrepeso";
-        }elseif($imc >= 30 && $imc <= 34.9){
-            return "Obesidade";
+            return "Sobrepeso";
         }elseif($imc >= 30 && $imc <= 34.9){
             return "Obesidade grau 1";
         }elseif($imc >= 35 && $imc <= 39.9){
