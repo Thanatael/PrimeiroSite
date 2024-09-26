@@ -176,3 +176,19 @@ function reduzirStr($str,$quantidade){
         $result = $stmt->execute();
         return ($result)?true:false;
     }
+
+    function contato($nome,$sobrenome,$email,$telefone,$msg)
+    {
+        $sql = "INSERT INTO `contato` (`nome`,`sobrenome`,`email`,`telefone`,`msg`)
+        VALUES(:nome,:sobrenome,:email,:telefone,:msg)";
+
+        $pdo = Database::conexao();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':sobrenome', $sobrenome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':telefone', $telefone);
+        $stmt->bindParam(':msg', $msg);
+        $result = $stmt->execute();
+        return ($result)?true:false;
+    }

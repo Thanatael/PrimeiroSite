@@ -3,6 +3,9 @@
 $nome = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['nome'])) ? $_POST['nome'] : null;
 
+$sobrenome = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['sobrenome'])) ? $_POST['sobrenome'] : null;
+
 $email = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['email'])) ? $_POST['email'] : null;
 
@@ -12,8 +15,11 @@ $peso = ($_SERVER["REQUEST_METHOD"] == "POST"
 $altura = ($_SERVER["REQUEST_METHOD"] == "POST"
  && !empty($_POST['altura'])) ? $_POST['altura'] : null;
 
- $telefone = ($_SERVER["REQUEST_METHOD"] == "POST"
+$telefone = ($_SERVER["REQUEST_METHOD"] == "POST"
  && !empty($_POST['telefone'])) ? $_POST['telefone'] : null;
+
+$msg = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['msg'])) ? $_POST['msg'] : null;
 
  $resposta = 0;
  
@@ -24,12 +30,6 @@ $altura = ($_SERVER["REQUEST_METHOD"] == "POST"
  $resposta = round(calcularImc($peso, $altura));
  $classificacao = classificarImc($resposta);
 
-if ($nome !== null && $email !== null && $peso !== null && $altura !== null && $resposta !== null && $classificacao !== null) {
-    cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
-}elseif($nome !== null && $email !== null && $telefone !== null){
-    registro($nome, $email, $telefone);
-}
- 
  timeZone();
   $data = dataAtual();
   $tituloDoSite = "BEM VINDO A INFOSPORTS!";
@@ -40,6 +40,21 @@ if($_GET && isset($_GET['pagina'])){
   $paginaUrl = $_GET['pagina'];
 }else{
   $paginaUrl = null;
+}
+
+
+if($paginaUrl === "principal"){
+  if($peso !== null && $altura !== null){
+  cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
+  }
+}elseif($paginaUrl === "cadastro"){
+  if($telefone !== null){
+  registro($nome, $email, $telefone);
+  }
+}elseif($paginaUrl === "contato"){
+  if($msg !== null){
+  contato($nome,$sobrenome,$email,$telefone,$msg);
+  }
 }
 
 include_once("header.php");

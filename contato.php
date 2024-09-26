@@ -25,7 +25,7 @@
                     <h2>Contate-nos</h2>
                 </div>
 
-                <form action="contato.html">
+                <form method="POST" action="#">
 
                     <div class="campos">
                         <div class="input-box">
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="input-box">
-                            <input type="text" id="sobrenome" placeholder="Sobrenome">
+                            <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">
                         </div>
 
                         <div class="input-box">
@@ -57,13 +57,13 @@
                         </div>
 
                         <div class="input-box">
-                            <textarea id="mensagem" placeholder="Digite aqui sua mensagem"></textarea>
+                            <textarea id="mensagem" placeholder="Digite aqui sua mensagem" name="msg" ></textarea>
                         </div>
 
                     </div>
 
                     <div class="button">
-                        <button value="Enviar" class="btn-concluir" id="btnEnviar">Enviar</button>
+                        <button value="Enviar" class="btn-concluir" id="btnEnviar" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
