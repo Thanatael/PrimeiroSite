@@ -1,6 +1,6 @@
 <div class="container">
 <header class="header">
-      <a class="logo" href="index.php">InfoSports</a>
+      <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
       <div class="headerBtnGroup">
         <?php include_once("menuTopo.php");?>
         <div>

@@ -1,6 +1,6 @@
 <div class="container">
     <header class="header">
-      <a class="logo" href="index.php">InfoSports</a>
+      <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
       <div class="headerBtnGroup">
       <?php include_once("menuTopo.php");?>
         <div>
@@ -21,7 +21,7 @@
     </header>
     <section class="main">
       <div class="box-content">
-        <form action="">
+        <form method="POST" action="#">
           <h1>Cadastre-se para acompanhar as notícias!</h1>
           <div class="name">
             <label for="nome"></label>
@@ -38,7 +38,7 @@
             <input type="text" placeholder="Telefone" id="telefone" name="telefone">
             <p id="tel-ajuda" class="msg-ajuda" style="display:none;">Insira um telefone válido. (11 números)</p>
           </div>
-          <button class="btn-concluir">Concluir</button>
+          <button type="submit" class="btn-concluir">Concluir</button>
 
         </form>
       </div>

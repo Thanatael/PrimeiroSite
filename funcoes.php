@@ -126,26 +126,9 @@ function reduzirStr($str,$quantidade){
       return $list;
   }
 
-  function cadastrar($nome,$email,$peso,$altura,$imc,$classificacao)
-    {
-        $sql = "INSERT INTO `imc` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
-        VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
-
-        $pdo = Database::conexao();
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':peso', $peso);
-        $stmt->bindParam(':altura', $altura);
-        $stmt->bindParam(':imc', $imc);
-        $stmt->bindParam(':classificacao', $classificacao);
-        $result = $stmt->execute();
-        return ($result)?true:false;
-    }
-
-    function classificarImc($imc){
-        if($imc <= 16){
-            return "magreza grave;";
+  function classificarImc($imc){
+      if($imc <= 16){
+          return "magreza grave;";
         }elseif($imc > 16 && $imc <= 17){
             return "magreza moderada";
         }elseif($imc > 17 && $imc <= 18.5){
@@ -161,4 +144,35 @@ function reduzirStr($str,$quantidade){
         }elseif($imc >= 40){
             return "Obesidade grau 3 ou morbida";
         }
+    }
+        
+    function cadastrar($nome,$email,$peso,$altura,$imc,$classificacao)
+          {
+              $sql = "INSERT INTO `imc` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
+              VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
+      
+              $pdo = Database::conexao();
+              $stmt = $pdo->prepare($sql);
+              $stmt->bindParam(':nome', $nome);
+              $stmt->bindParam(':email', $email);
+              $stmt->bindParam(':peso', $peso);
+              $stmt->bindParam(':altura', $altura);
+              $stmt->bindParam(':imc', $imc);
+              $stmt->bindParam(':classificacao', $classificacao);
+              $result = $stmt->execute();
+              return ($result)?true:false;
+          }
+
+    function registro($nome,$email,$telefone)
+    {
+        $sql = "INSERT INTO `cadastro` (`nome`,`email`,`telefone`)
+        VALUES(:nome,:email,:telefone)";
+
+        $pdo = Database::conexao();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':telefone', $telefone);
+        $result = $stmt->execute();
+        return ($result)?true:false;
     }

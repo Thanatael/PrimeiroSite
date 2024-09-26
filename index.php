@@ -12,6 +12,9 @@ $peso = ($_SERVER["REQUEST_METHOD"] == "POST"
 $altura = ($_SERVER["REQUEST_METHOD"] == "POST"
  && !empty($_POST['altura'])) ? $_POST['altura'] : null;
 
+ $telefone = ($_SERVER["REQUEST_METHOD"] == "POST"
+ && !empty($_POST['telefone'])) ? $_POST['telefone'] : null;
+
  $resposta = 0;
  
  include_once("configuracao.php");
@@ -20,7 +23,12 @@ $altura = ($_SERVER["REQUEST_METHOD"] == "POST"
 
  $resposta = round(calcularImc($peso, $altura));
  $classificacao = classificarImc($resposta);
- cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
+
+if ($nome !== null && $email !== null && $peso !== null && $altura !== null && $resposta !== null && $classificacao !== null) {
+    cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
+}elseif($nome !== null && $email !== null && $telefone !== null){
+    registro($nome, $email, $telefone);
+}
  
  timeZone();
   $data = dataAtual();
@@ -41,8 +49,8 @@ include_once("header.php");
     include_once("contato.php");
   }elseif($paginaUrl === "login"){
     include_once("login.php");
-  }elseif($paginaUrl === "registro"){
-    include_once("registro.php");
+  }elseif($paginaUrl === "cadastro"){
+    include_once("cadastro.php");
   }else{
     echo "404 Página não existe!";
   }
