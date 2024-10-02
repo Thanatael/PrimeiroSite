@@ -192,3 +192,20 @@ function reduzirStr($str,$quantidade){
         $result = $stmt->execute();
         return ($result)?true:false;
     }
+
+    function noticia($titulo,$descricaocurta,$imagem,$href,$descricao)
+    {
+        $sql = "INSERT INTO `noticia` (`titulo`,`descricaocurta`,`imagem`,`href`,`descricao`)
+        VALUES(:titulo,:descricaocurta,:imagem,:href,:descricao)";
+
+        $pdo = Database::conexao();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':titulo', $titulo);
+        $stmt->bindParam(':descricaocurta', $descricaocurta);
+        $stmt->bindParam(':imagem', $imagem);
+        $stmt->bindParam(':href', $href);
+        $stmt->bindParam(':descricao', $descricao);
+        $result = $stmt->execute();
+        return ($result)?true:false;
+    }
+    

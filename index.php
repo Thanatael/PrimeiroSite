@@ -21,6 +21,21 @@ $telefone = ($_SERVER["REQUEST_METHOD"] == "POST"
 $msg = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['msg'])) ? $_POST['msg'] : null;
 
+$titulo = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['titulo'])) ? $_POST['titulo'] : null;
+
+$descricaocurta = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['descricaocurta'])) ? $_POST['descricaocurta'] : null;
+
+$imagem = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['imagem'])) ? $_POST['imagem'] : null;
+
+$href = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['href'])) ? $_POST['href'] : null;
+
+$descricao = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['descricao'])) ? $_POST['descricao'] : null;
+
  $resposta = 0;
  
  include_once("configuracao.php");
@@ -55,6 +70,10 @@ if($paginaUrl === "principal"){
   if($msg !== null){
   contato($nome,$sobrenome,$email,$telefone,$msg);
   }
+}elseif($paginaUrl === "noticia"){
+  if($descricao !== null){
+  noticia($titulo,$descricaocurta,$imagem,$href,$descricao);
+  }
 }
 
 include_once("header.php");
@@ -66,6 +85,8 @@ include_once("header.php");
     include_once("login.php");
   }elseif($paginaUrl === "cadastro"){
     include_once("cadastro.php");
+  }elseif($paginaUrl === "noticia"){
+    include_once("noticia.php");
   }else{
     echo "404 Página não existe!";
   }

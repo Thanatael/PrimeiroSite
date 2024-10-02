@@ -22,7 +22,7 @@
         <div class="container-body">
             <div class="container">
                 <div class="title">
-                    <h2>Contate-nos</h2>
+                    <h2>Cadastre noiticias</h2>
                 </div>
 
                 <form method="POST" action="#">
@@ -30,34 +30,34 @@
                     <div class="campos">
                         <div class="input-box">
                             <div class="name">
-                            <label for="nome"></label>
-                            <input type="text" placeholder="Nome" id="nome" name="nome" >
+                            <label for="titulo"></label>
+                            <input type="text" placeholder="Titulo" id="titulo" name="titulo" >
                             <p id="nome-ajuda" class="msg-ajuda" style="display:none;">Mín. 3 caracteres</p>
                         </div>
                         </div>
 
                         <div class="input-box">
-                            <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">
+                            <input type="text" id="descricaocurta" placeholder="DescricaoCurta" name="descricaocurta">
                         </div>
 
                         <div class="input-box">
                             <div class="email">
-                            <label for="email"></label>
-                            <input type="text" placeholder="Email" id="email" name="email">
+                            <label for="imagem"></label>
+                            <input type="text" placeholder="Imagem" id="imagem" name="imagem">
                             <p id="email-ajuda" class="msg-ajuda" style="display:none;">Insira um email válido. Ex: abc@abc.com</p>
                         </div>
                         </div>
 
                         <div class="input-box">
                             <div class="telefone">
-                            <label for="telefone"></label>
-                            <input type="text" placeholder="Telefone" id="telefone" name="telefone">
+                            <label for="href"></label>
+                            <input type="text" placeholder="Href" id="href" name="href">
                             <p id="tel-ajuda" class="msg-ajuda" style="display:none;">Insira um telefone válido. (11 números)</p>
                         </div>
                         </div>
 
                         <div class="input-box">
-                            <textarea id="mensagem" placeholder="Digite aqui sua mensagem" name="msg" ></textarea>
+                            <textarea id="descricao" placeholder="Digite aqui sua descricao" name="descricao" ></textarea>
                         </div>
 
                     </div>
@@ -68,7 +68,7 @@
                 </form>
             </div>
             <section class="contacts">
-                <h2>Contatos</h2>
+                <h2>Cadastros</h2>
             </section>
         </div>
 

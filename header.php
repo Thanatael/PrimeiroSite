@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="css/contato.css">
         <link rel="stylesheet" href="css/validacao-contato.css">
     <?php endif; ?>
+    <?php if($paginaUrl === "noticia"):?>
+        <link rel="stylesheet" href="css/noticia.css">
+    <?php endif; ?>
     <?php if($paginaUrl === "cadastro"):?>
         <link rel="stylesheet" href="css/registro.css">
     <?php endif; ?>
@@ -40,6 +43,7 @@
           <input type="checkbox" class="check" id="chk"/>
 
           <label class="label" for="chk">
+      
             <i class="fas fa-moon"></i>
             <i class="fas fa-sun"></i>
             <div class="bola"></div>
