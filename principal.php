@@ -36,7 +36,7 @@ $subTituloDoSite = "sim";
           <div class="categoryCard">
             <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
             <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
-            <p class="mainCategoryCardDescription"><?= reduzirStr($noticia['descricao'],180)?></p>
+            <p class="mainCategoryCardDescription"><?=$noticia['descricao']?></p>
           </div>
         </a>
         <?php endforeach?>

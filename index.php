@@ -37,27 +37,27 @@ $descricao = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['descricao'])) ? $_POST['descricao'] : null;
 
  $resposta = 0;
- 
+
  include_once("configuracao.php");
  include_once("configuracao/conexao.php");
  include_once("funcoes.php");
 
  $resposta = round(calcularImc($peso, $altura));
  $classificacao = classificarImc($resposta);
-
+ 
  timeZone();
-  $data = dataAtual();
-  $tituloDoSite = "BEM VINDO A INFOSPORTS!";
-  $subTituloDoSite = "Aqui é onde você encontra todos os itens mais novos e modernos do seu esporte
-  preferido. <br>".$data;
-
-if($_GET && isset($_GET['pagina'])){
-  $paginaUrl = $_GET['pagina'];
-}else{
-  $paginaUrl = null;
-}
-
-
+ $data = dataAtual();
+ $tituloDoSite = "BEM VINDO A INFOSPORTS!";
+ $subTituloDoSite = "Aqui é onde você encontra todos os itens mais novos e modernos do seu esporte
+ preferido. <br>".$data;
+ 
+ if($_GET && isset($_GET['pagina'])){
+   $paginaUrl = $_GET['pagina'];
+ }else{
+   $paginaUrl = null;
+ }
+ 
+ 
 if($paginaUrl === "principal"){
   if($peso !== null && $altura !== null){
   cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
@@ -90,8 +90,6 @@ include_once("header.php");
   }else{
     echo "404 Página não existe!";
   }
-
- echo "oii"
 
 include_once("footer.php");
 ?>
