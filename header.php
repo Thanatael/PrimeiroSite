@@ -23,6 +23,9 @@
     <?php if($paginaUrl === "login"):?>
         <link rel="stylesheet" href="css/login.css">
     <?php endif; ?>
+    <?php if($paginaUrl === "paginas"):?>
+      <link rel="stylesheet" href="css/paginas.css">
+    <?php endif; ?>
 
   <script src="scripts/header.js" defer></script>
   <script src="scripts/validacao.js" defer></script>

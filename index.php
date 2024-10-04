@@ -87,6 +87,8 @@ include_once("header.php");
     include_once("cadastro.php");
   }elseif($paginaUrl === "noticia"){
     include_once("noticia.php");
+  }elseif($paginaUrl === "paginas"){
+    include_once("paginas.php");
   }else{
     echo "404 Página não existe!";
   }

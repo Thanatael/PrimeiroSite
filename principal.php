@@ -32,7 +32,7 @@ $subTituloDoSite = "sim";
         $listaNoticia = criarLista();
         foreach($listaNoticia as $noticia):
         ?>
-        <a class="pag-link" href="boxe.html">
+        <a class="pag-link" href="<?='http://localhost/ThiagoS/?pagina=paginas'?>">
           <div class="categoryCard">
             <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
             <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
