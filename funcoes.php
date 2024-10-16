@@ -82,7 +82,7 @@ function criarLista() {
     foreach ($noticias as $noticia) {
         $listaNoticia[] = [
             "titulo" => $noticia['titulo'],
-            "descricao" => $noticia['descricao'],
+            "descricao" => $noticia['descricaocurta'],
             "imagem" => $noticia['imagem'],
             "href" => $noticia['href']
         ];
