@@ -21,7 +21,7 @@
     </header>
     <section class="main">
       <div class="box-content">
-        <form method="POST" action="#">
+      <form method="POST" action="#">
           <h1>Cadastre-se para acompanhar as notícias!</h1>
           <div class="name">
             <label for="nome"></label>
@@ -33,12 +33,22 @@
             <input type="text" placeholder="Email" id="email" name="email">
             <p id="email-ajuda" class="msg-ajuda" style="display:none;">Insira um email válido. Ex: abc@abc.com</p>
           </div>
-          <div class="telefone">
+          <div class="email">
             <label for="telefone"></label>
             <input type="text" placeholder="Telefone" id="telefone" name="telefone">
             <p id="tel-ajuda" class="msg-ajuda" style="display:none;">Insira um telefone válido. (11 números)</p>
           </div>
-          <button type="submit" class="btn-concluir">Concluir</button>
+          <div class="email">
+            <label for="login"></label>
+            <input type="text" placeholder="Login" id="login" name="login">
+            <p id="login" class="msg-ajuda" style="display:none;">Insira um login valido</p>
+          </div>
+          <div class="email">
+            <label for="senha"></label>
+            <input type="password" placeholder="senha" id="senha" name="senha">
+            <p id="senha" class="msg-ajuda" style="display:none;">Insira uma senha valida</p>
+          </div>
+          <button class="btn-concluir">Concluir</button>
 
         </form>
       </div>

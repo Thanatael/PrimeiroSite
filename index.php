@@ -42,6 +42,9 @@ $descricao = ($_SERVER["REQUEST_METHOD"] == "POST"
 $login = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['login'])) ? $_POST['login'] : null;
 
+$senha = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty(criptografia($_POST['senha']))) ? criptografia($_POST['senha']) : null;
+
  $resposta = 0;
 
  $resposta = round(calcularImc($peso, $altura));
@@ -66,7 +69,7 @@ if($paginaUrl === "principal"){
   }
 }elseif($paginaUrl === "cadastro"){
   if($telefone !== null){
-  registro($nome, $email, $telefone);
+  registro($nome, $email, $telefone, $login, $senha);
   }
 }elseif($paginaUrl === "contato"){
   if($msg !== null){

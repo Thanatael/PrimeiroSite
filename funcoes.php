@@ -207,7 +207,7 @@ function criarLista() {
 
     function verificarLogin($login){
         $pdo = Database::conexao();
-        $sql = "SELECT `id`,`nome`,`login`,`senha` FROM registro_tb WHERE `login` = '$login'";
+        $sql = "SELECT `id`,`nome`,`login`,`senha` FROM registro WHERE `login` = '$login'";
         // var_dump($sql);die;
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
