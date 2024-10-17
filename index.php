@@ -1,4 +1,7 @@
 <?php
+ include_once("configuracao.php");
+ include_once("configuracao/conexao.php");
+ include_once("funcoes.php");
 
 $nome = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['nome'])) ? $_POST['nome'] : null;
@@ -36,11 +39,10 @@ $href = ($_SERVER["REQUEST_METHOD"] == "POST"
 $descricao = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['descricao'])) ? $_POST['descricao'] : null;
 
- $resposta = 0;
+$login = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['login'])) ? $_POST['login'] : null;
 
- include_once("configuracao.php");
- include_once("configuracao/conexao.php");
- include_once("funcoes.php");
+ $resposta = 0;
 
  $resposta = round(calcularImc($peso, $altura));
  $classificacao = classificarImc($resposta);
@@ -74,7 +76,43 @@ if($paginaUrl === "principal"){
   if($descricao !== null){
   noticia($titulo,$descricaocurta,$imagem,$href,$descricao);
   }
+}elseif($paginaUrl === "login"){
+  if($login!== null && $senha!== null){
+    $usuarioCadastrado = verificarLogin($login);
+    if(
+      $usuarioCadastrado &&
+      validaSenha($senha, $usuarioCadastrado['senha'])
+    ){
+        $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+        $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
+        $_SESSION["usuario"]["status"] = 'logado';
+        registrarAcessoValido($usuarioCadastrado);
+    }
+  }
+  // var_dump($_SESSION["usuario"]["status"]);die;
 }
+
+// if($paginaUrl === "principal"){
+//   cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
+// }elseif($paginaUrl === "registro"){
+//   cadastrarRegistro($nome, $email, $telefone,$login,$senha);
+// }elseif($paginaUrl === "contato"){
+//   cadastrarContato($nome,$sobrenome,$email,$telefone,$mensagem);
+// }elseif($paginaUrl === "noticia"){
+//   cadastrarNoticia($titulo,$imagem,$descricao);
+// }elseif($paginaUrl === "login"){
+//   $usuarioCadastrado = verificarLogin($login);
+//   if(
+//     $usuarioCadastrado &&
+//     validaSenha($senha, $usuarioCadastrado['senha'])
+//   ){
+//       $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+//       $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
+//       $_SESSION["usuario"]["status"] = 'logado';
+//       registrarAcessoValido($usuarioCadastrado);
+//   }
+// // var_dump($_SESSION["usuario"]["status"]);die;
+// }
 
 include_once("header.php");
   if($paginaUrl === "principal"){
@@ -84,11 +122,11 @@ include_once("header.php");
   }elseif($paginaUrl === "login"){
     include_once("login.php");
   }elseif($paginaUrl === "cadastro"){
+    // protegerTela();
     include_once("cadastro.php");
   }elseif($paginaUrl === "noticia"){
+    protegerTela();
     include_once("noticia.php");
-  }elseif($paginaUrl === "paginas"){
-    include_once("paginas.php");
   }else{
     echo "404 Página não existe!";
   }

@@ -156,19 +156,22 @@ function criarLista() {
               return ($result)?true:false;
           }
 
-    function registro($nome,$email,$telefone)
-    {
-        $sql = "INSERT INTO `cadastro` (`nome`,`email`,`telefone`)
-        VALUES(:nome,:email,:telefone)";
-
-        $pdo = Database::conexao();
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':telefone', $telefone);
-        $result = $stmt->execute();
-        return ($result)?true:false;
-    }
+          function registro($nome,$email,$telefone,$login,$senha)
+          {
+              if(!$nome || !$email || !$telefone || !$login || !$senha){return;}
+              $sql = "INSERT INTO `registro` (`nome`,`email`,`telefone`,`login`,`senha`)
+              VALUES(:nome,:email,:telefone,:login,:senha)";
+      
+              $pdo = Database::conexao();
+              $stmt = $pdo->prepare($sql);
+              $stmt->bindParam(':nome', $nome);
+              $stmt->bindParam(':email', $email);
+              $stmt->bindParam(':telefone', $telefone);
+              $stmt->bindParam(':login', $login);
+              $stmt->bindParam(':senha', $senha);
+              $result = $stmt->execute();
+              return ($result)?true:false;
+          }
 
     function contato($nome,$sobrenome,$email,$telefone,$msg)
     {
@@ -201,4 +204,38 @@ function criarLista() {
         $result = $stmt->execute();
         return ($result)?true:false;
     }
-    
+
+    function verificarLogin($login){
+        $pdo = Database::conexao();
+        $sql = "SELECT `id`,`nome`,`login`,`senha` FROM registro_tb WHERE `login` = '$login'";
+        // var_dump($sql);die;
+        $stmt = $pdo->prepare($sql);
+        $list = $stmt->execute();
+        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $list[0];
+    }
+    function validaSenha($senhaDigitada, $senhaBd){
+        if(!$senhaDigitada || !$senhaBd){return false;}
+        if($senhaDigitada == $senhaBd){return true;}
+        return false;
+    }
+
+    function registrarAcessoValido($usuarioCadastrado){
+        $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+        $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
+        $_SESSION["usuario"]["status"] = 'logado';
+    }
+
+    function protegerTela(){
+        if(
+            !$_SESSION || 
+            !$_SESSION["usuario"]["status"] === 'logado'
+        ){
+            header('Location:'.constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
+        }
+    }
+
+    function criptografia($senha){
+        if(!$senha)return false;
+        return sha1($senha);
+    }
