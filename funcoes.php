@@ -239,3 +239,9 @@ function criarLista() {
         if(!$senha)return false;
         return sha1($senha);
     }
+
+    
+    function limparSessao(){
+        unset($_SESSION["usuario"]);
+        header('Location:'.constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
+    }

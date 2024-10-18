@@ -86,14 +86,14 @@ if($paginaUrl === "principal"){
       $usuarioCadastrado &&
       validaSenha($senha, $usuarioCadastrado['senha'])
     ){
-        $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
-        $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
-        $_SESSION["usuario"]["status"] = 'logado';
-        registrarAcessoValido($usuarioCadastrado);
-    }
+      registrarAcessoValido($usuarioCadastrado);
+    }elseif($paginaUrl === "sair"){
+    limparSessao();
+  }
   }
   // var_dump($_SESSION["usuario"]["status"]);die;
 }
+
 
 // if($paginaUrl === "principal"){
 //   cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
