@@ -6,6 +6,10 @@ $subTituloDoSite = "sim";
 <div class="container">
     <header class="header">
       <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
+      <?php if(isset($_SESSION["usuario"]) && $_SESSION["usuario"]["status"] === 'logado'): ?>
+          <?php $nomeUsuario = $_SESSION["usuario"]["nome"]; ?>
+          <p id="logUser">Bem vindo! <?=$nomeUsuario?></p>
+      <?php endif;?>
       <div class="headerBtnGroup">
         <?php include_once("menuTopo.php");?>
         <div>

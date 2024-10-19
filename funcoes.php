@@ -229,9 +229,17 @@ function criarLista() {
     function protegerTela(){
         if(
             !$_SESSION || 
-            !$_SESSION["usuario"]["status"] === 'logado'
+            $_SESSION["usuario"]["status"] !== 'logado'
         ){
             header('Location:'.constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
+        }
+    }
+
+    function protegerLogin(){
+        if(
+            $_SESSION
+        ){
+            header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
         }
     }
 
@@ -244,4 +252,12 @@ function criarLista() {
     function limparSessao(){
         unset($_SESSION["usuario"]);
         header('Location:'.constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
+    }
+
+    function butaosair() {
+        if (isset($_SESSION["usuario"]) && $_SESSION["usuario"]["status"] === 'logado') {
+            return true;
+        }else{
+            header('Location: ' . constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
+        }
     }

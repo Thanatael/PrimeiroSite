@@ -27,4 +27,5 @@ define("URL_LOCAL_BASE",$enviroment['local']);
 define("URL_LOCAL_SITE",constant("URL_LOCAL_BASE")."ThiagoS/");
 define("URL_LOCAL_SITE_PAGINA",constant("URL_LOCAL_SITE")."?pagina=");
 define("URL_LOCAL_SITE_PAGINA_LOGIN",constant("URL_LOCAL_SITE")."?pagina=login");
+define("URL_LOCAL_SITE_PAGINA_PRIN",constant("URL_LOCAL_SITE")."?pagina=principal");
 define("URL_LOCAL_IMG",constant("URL_LOCAL_BASE")."./imagens/");

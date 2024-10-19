@@ -79,19 +79,16 @@ if($paginaUrl === "principal"){
   if($descricao !== null){
   noticia($titulo,$descricaocurta,$imagem,$href,$descricao);
   }
-}elseif($paginaUrl === "login"){
-  if($login!== null && $senha!== null){
-    $usuarioCadastrado = verificarLogin($login);
-    if(
-      $usuarioCadastrado &&
-      validaSenha($senha, $usuarioCadastrado['senha'])
-    ){
-      registrarAcessoValido($usuarioCadastrado);
-    }elseif($paginaUrl === "sair"){
-    limparSessao();
+}elseif($paginaUrl === "login") {
+  if ($login !== null && $senha !== null) {
+      $usuarioCadastrado = verificarLogin($login);
+      if ($usuarioCadastrado && validaSenha($senha, $usuarioCadastrado['senha'])) {
+          registrarAcessoValido($usuarioCadastrado);
+          butaosair();
+      }
   }
-  }
-  // var_dump($_SESSION["usuario"]["status"]);die;
+} elseif ($paginaUrl === "sair") {
+  limparSessao();
 }
 
 
@@ -121,11 +118,12 @@ include_once("header.php");
   if($paginaUrl === "principal"){
     include_once("principal.php");
   }elseif($paginaUrl === "contato"){
+    protegerTela();
     include_once("contato.php");
   }elseif($paginaUrl === "login"){
+    protegerLogin();
     include_once("login.php");
   }elseif($paginaUrl === "cadastro"){
-    // protegerTela();
     include_once("cadastro.php");
   }elseif($paginaUrl === "noticia"){
     protegerTela();
