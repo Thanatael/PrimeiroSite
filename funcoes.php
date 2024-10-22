@@ -139,39 +139,39 @@ function criarLista() {
         }
     }
         
-    function cadastrar($nome,$email,$peso,$altura,$imc,$classificacao)
-          {
-              $sql = "INSERT INTO `imc` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
-              VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
-      
-              $pdo = Database::conexao();
-              $stmt = $pdo->prepare($sql);
-              $stmt->bindParam(':nome', $nome);
-              $stmt->bindParam(':email', $email);
-              $stmt->bindParam(':peso', $peso);
-              $stmt->bindParam(':altura', $altura);
-              $stmt->bindParam(':imc', $imc);
-              $stmt->bindParam(':classificacao', $classificacao);
-              $result = $stmt->execute();
-              return ($result)?true:false;
-          }
+        function cadastrar($nome,$email,$peso,$altura,$imc,$classificacao)
+        {
+            $sql = "INSERT INTO `imc` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
+            VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
+    
+            $pdo = Database::conexao();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':peso', $peso);
+            $stmt->bindParam(':altura', $altura);
+            $stmt->bindParam(':imc', $imc);
+            $stmt->bindParam(':classificacao', $classificacao);
+            $result = $stmt->execute();
+            return ($result)?true:false;
+        }
 
-          function registro($nome,$email,$telefone,$login,$senha)
-          {
-              if(!$nome || !$email || !$telefone || !$login || !$senha){return;}
-              $sql = "INSERT INTO `registro` (`nome`,`email`,`telefone`,`login`,`senha`)
-              VALUES(:nome,:email,:telefone,:login,:senha)";
-      
-              $pdo = Database::conexao();
-              $stmt = $pdo->prepare($sql);
-              $stmt->bindParam(':nome', $nome);
-              $stmt->bindParam(':email', $email);
-              $stmt->bindParam(':telefone', $telefone);
-              $stmt->bindParam(':login', $login);
-              $stmt->bindParam(':senha', $senha);
-              $result = $stmt->execute();
-              return ($result)?true:false;
-          }
+        function registro($nome,$email,$telefone,$login,$senha)
+        {
+            if(!$nome || !$email || !$telefone || !$login || !$senha){return;}
+            $sql = "INSERT INTO `registro` (`nome`,`email`,`telefone`,`login`,`senha`)
+            VALUES(:nome,:email,:telefone,:login,:senha)";
+    
+            $pdo = Database::conexao();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':telefone', $telefone);
+            $stmt->bindParam(':login', $login);
+            $stmt->bindParam(':senha', $senha);
+            $result = $stmt->execute();
+            return ($result)?true:false;
+        }
 
     function contato($nome,$sobrenome,$email,$telefone,$msg)
     {
@@ -214,9 +214,16 @@ function criarLista() {
         $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $list[0];
     }
+
     function validaSenha($senhaDigitada, $senhaBd){
         if(!$senhaDigitada || !$senhaBd){return false;}
         if($senhaDigitada == $senhaBd){return true;}
+        return false;
+    }
+
+    function validaEmail($emailDigitada, $emailBd){
+        if(!$emailDigitada || !$emailBd){return false;}
+        if($emailDigitada == $emailBd){return true;}
         return false;
     }
 
@@ -243,9 +250,19 @@ function criarLista() {
         }
     }
 
+    function protegerCas(){
+        if(
+            !$_SESSION || 
+            $_SESSION["usuario"]["login"] !== null
+        ){
+            header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
+        }
+    }
+
     function criptografia($senha){
         if(!$senha)return false;
-        return sha1($senha);
+        // return hash('sha512',$senha);
+        return hash('sha1',$senha);
     }
 
     
@@ -260,4 +277,8 @@ function criarLista() {
         }else{
             header('Location: ' . constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
         }
+    }
+
+    function resetPost() {
+        $_POST = array();
     }

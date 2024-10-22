@@ -61,6 +61,7 @@ $subTituloDoSite = "sim";
             <input id="altura" name="altura" type="text" placeholder="Digite a altura...">
             <button type="submit" class="btnCalcular">Calcular</button>
         </form>
+
         <h4>
           Resultado: <?= $resposta;?> <br/> 
           Classificação: <?= $classificacao;?>

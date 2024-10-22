@@ -69,6 +69,7 @@ if($paginaUrl === "principal"){
   }
 }elseif($paginaUrl === "cadastro"){
   if($telefone !== null){
+  resetPost();
   registro($nome, $email, $telefone, $login, $senha);
   }
 }elseif($paginaUrl === "contato"){
@@ -91,33 +92,10 @@ if($paginaUrl === "principal"){
   limparSessao();
 }
 
-
-// if($paginaUrl === "principal"){
-//   cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
-// }elseif($paginaUrl === "registro"){
-//   cadastrarRegistro($nome, $email, $telefone,$login,$senha);
-// }elseif($paginaUrl === "contato"){
-//   cadastrarContato($nome,$sobrenome,$email,$telefone,$mensagem);
-// }elseif($paginaUrl === "noticia"){
-//   cadastrarNoticia($titulo,$imagem,$descricao);
-// }elseif($paginaUrl === "login"){
-//   $usuarioCadastrado = verificarLogin($login);
-//   if(
-//     $usuarioCadastrado &&
-//     validaSenha($senha, $usuarioCadastrado['senha'])
-//   ){
-//       $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
-//       $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
-//       $_SESSION["usuario"]["status"] = 'logado';
-//       registrarAcessoValido($usuarioCadastrado);
-//   }
-// // var_dump($_SESSION["usuario"]["status"]);die;
-// }
-
 include_once("header.php");
-  if($paginaUrl === "principal"){
-    include_once("principal.php");
-  }elseif($paginaUrl === "contato"){
+if($paginaUrl === "principal"){
+  include_once("principal.php");
+}elseif($paginaUrl === "contato"){
     protegerTela();
     include_once("contato.php");
   }elseif($paginaUrl === "login"){
@@ -131,6 +109,28 @@ include_once("header.php");
   }else{
     echo "404 Página não existe!";
   }
-
-include_once("footer.php");
-?>
+  
+  include_once("footer.php");
+  ?>
+ 
+ // if($paginaUrl === "principal"){
+  //   cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
+  // }elseif($paginaUrl === "registro"){
+  //   cadastrarRegistro($nome, $email, $telefone,$login,$senha);
+  // }elseif($paginaUrl === "contato"){
+  //   cadastrarContato($nome,$sobrenome,$email,$telefone,$mensagem);
+  // }elseif($paginaUrl === "noticia"){
+  //   cadastrarNoticia($titulo,$imagem,$descricao);
+  // }elseif($paginaUrl === "login"){
+  //   $usuarioCadastrado = verificarLogin($login);
+  //   if(
+  //     $usuarioCadastrado &&
+  //     validaSenha($senha, $usuarioCadastrado['senha'])
+  //   ){
+  //       $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+  //       $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
+  //       $_SESSION["usuario"]["status"] = 'logado';
+  //       registrarAcessoValido($usuarioCadastrado);
+  //   }
+  // // var_dump($_SESSION["usuario"]["status"]);die;
+  // }
