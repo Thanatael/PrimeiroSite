@@ -67,6 +67,8 @@ function reduzirStr($str,$quantidade){
     $tamanho = strlen($str);
     if($str && $tamanho >= $quantidade){
       return substr($str,0,$quantidade)." [...]";
+    }else{
+        return $str;
     }
   }
 
@@ -205,9 +207,9 @@ function criarLista() {
         return ($result)?true:false;
     }
 
-    function verificarLogin($login){
+    function verificarLogin($email){
         $pdo = Database::conexao();
-        $sql = "SELECT `id`,`nome`,`login`,`senha` FROM registro WHERE `login` = '$login'";
+        $sql = "SELECT `id`,`nome`,`login`,`senha`,`email` FROM registro WHERE `email` = '$email'";
         // var_dump($sql);die;
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
@@ -218,12 +220,6 @@ function criarLista() {
     function validaSenha($senhaDigitada, $senhaBd){
         if(!$senhaDigitada || !$senhaBd){return false;}
         if($senhaDigitada == $senhaBd){return true;}
-        return false;
-    }
-
-    function validaEmail($emailDigitada, $emailBd){
-        if(!$emailDigitada || !$emailBd){return false;}
-        if($emailDigitada == $emailBd){return true;}
         return false;
     }
 
@@ -245,15 +241,6 @@ function criarLista() {
     function protegerLogin(){
         if(
             $_SESSION
-        ){
-            header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
-        }
-    }
-
-    function protegerCas(){
-        if(
-            !$_SESSION || 
-            $_SESSION["usuario"]["login"] !== null
         ){
             header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
         }

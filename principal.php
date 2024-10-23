@@ -1,6 +1,6 @@
 <?php
-$tituloDoSite = "Tobias";
-$subTituloDoSite = "sim";
+$tituloDoSite = "Infosports";
+$subTituloDoSite = "esportes e muito mais";
 ?>
 
 <div class="container">
@@ -36,7 +36,7 @@ $subTituloDoSite = "sim";
         $listaNoticia = criarLista();
         foreach($listaNoticia as $noticia):
         ?>
-        <a class="pag-link" href="<?='http://localhost/ThiagoS/?pagina=paginas'?>">
+        <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE')?>1">
           <div class="categoryCard">
             <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
             <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>

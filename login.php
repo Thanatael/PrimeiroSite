@@ -25,8 +25,8 @@
           <h1>Faça o seu Login</h1>
           <div class="email">
             <label for="email"></label>
-            <input type="text" placeholder="Login" id="login" name="login">
-            <p id="email-ajuda" class="msg-ajuda" style="display:none;">Insira um login válido.</p>
+            <input type="text" placeholder="Email" id="email" name="email">
+            <p id="email-ajuda" class="msg-ajuda" style="display:none;">Insira um email válido.</p>
           </div>
           <div class="telefone">
             <label for="telefone"></label>

@@ -62,15 +62,15 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
    $paginaUrl = null;
  }
  
- 
-if($paginaUrl === "principal"){
+ if($paginaUrl === "principal"){
   if($peso !== null && $altura !== null){
+  resetPost();
   cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
   }
 }elseif($paginaUrl === "cadastro"){
-  if($telefone !== null){
-  resetPost();
-  registro($nome, $email, $telefone, $login, $senha);
+  if($telefone !== null && $email !== null && $senha !== null){
+    resetPost();
+      registro($nome, $email, $telefone, $login, $senha);
   }
 }elseif($paginaUrl === "contato"){
   if($msg !== null){
@@ -78,11 +78,12 @@ if($paginaUrl === "principal"){
   }
 }elseif($paginaUrl === "noticia"){
   if($descricao !== null){
+  resetPost();
   noticia($titulo,$descricaocurta,$imagem,$href,$descricao);
   }
 }elseif($paginaUrl === "login") {
-  if ($login !== null && $senha !== null) {
-      $usuarioCadastrado = verificarLogin($login);
+  if ($email !== null && $senha !== null) {
+      $usuarioCadastrado = verificarLogin($email);
       if ($usuarioCadastrado && validaSenha($senha, $usuarioCadastrado['senha'])) {
           registrarAcessoValido($usuarioCadastrado);
           butaosair();
@@ -113,7 +114,7 @@ if($paginaUrl === "principal"){
   include_once("footer.php");
   ?>
  
- // if($paginaUrl === "principal"){
+ <!-- // if($paginaUrl === "principal"){
   //   cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
   // }elseif($paginaUrl === "registro"){
   //   cadastrarRegistro($nome, $email, $telefone,$login,$senha);
@@ -133,4 +134,4 @@ if($paginaUrl === "principal"){
   //       registrarAcessoValido($usuarioCadastrado);
   //   }
   // // var_dump($_SESSION["usuario"]["status"]);die;
-  // }
+  // } -->
