@@ -68,9 +68,16 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
   cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
   }
 }elseif($paginaUrl === "cadastro"){
-  if($telefone !== null && $email !== null && $senha !== null){
+  if($telefone !== null && $senha !== null){
     resetPost();
+    $usuarioCadastrado = verificarLogin($email);
+    if($usuarioCadastrado){
+      menssagem("exist");
+    }else{
       registro($nome, $email, $telefone, $login, $senha);
+      // menssagem("cadas");
+      header('Location:'.constant("URL_LOCAL_SITE_PAGINA_SUCE"));
+    }
   }
 }elseif($paginaUrl === "contato"){
   if($msg !== null){
@@ -84,7 +91,7 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
 }elseif($paginaUrl === "login") {
   if ($email !== null && $senha !== null) {
       $usuarioCadastrado = verificarLogin($email);
-      if ($usuarioCadastrado && validaSenha($senha, $usuarioCadastrado['senha'])) {
+      if ($usuarioCadastrado && validaSenha($email, $usuarioCadastrado['senha'])) {
           registrarAcessoValido($usuarioCadastrado);
           butaosair();
       }
@@ -107,6 +114,8 @@ if($paginaUrl === "principal"){
   }elseif($paginaUrl === "noticia"){
     protegerTela();
     include_once("noticia.php");
+  }elseif($paginaUrl === "sucesso"){
+    include_once("sucesso.php");
   }else{
     echo "404 Página não existe!";
   }

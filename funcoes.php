@@ -214,7 +214,7 @@ function criarLista() {
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
         $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $list[0];
+        return $list;
     }
 
     function validaSenha($senhaDigitada, $senhaBd){
@@ -268,4 +268,13 @@ function criarLista() {
 
     function resetPost() {
         $_POST = array();
+    }
+
+    function menssagem($msg) {
+        if ($msg === "cadas") {
+            echo "<script>alert('Cadastro realizado com sucesso!');</script>";
+        }
+        elseif ($msg === "exist") {
+            echo "<script>alert('Esse email já existe.');</script>";
+        }
     }
