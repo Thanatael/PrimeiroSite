@@ -1,11 +1,9 @@
 
 <div class="container">
         <header class="header">
-            <a class="logo" href="index.html">InfoSports</a>
+            <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
             <div class="headerBtnGroup">
-                <button class="navBtn"><a href="login.html">Login</a></button>
-                <button class="navBtn"><a href="registro.html">Registro</a></button>
-                <button class="navBtn"><a href="contato.html">Contato</a></button>
+                <?php include_once("menuTopo.php");?>
                 <div>
                     <input type="checkbox" class="check" id="chk" />
                 
@@ -28,7 +26,7 @@
         <section class="gridContainer">
             <div class="mainContent">
                 <div class="categoryCard">
-                    <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg">
+                    <img class="mainCardImg" src="<?=$noticia['imagem']?>" alt="mainCardImg">
                     <h1 class="mainCategoryCardTitle"><?=$noticia['titulo']?></h1>
                     <p class="mainCategoryCardDescription" Align="justify">
                     <?=$noticia['descricao']?>
