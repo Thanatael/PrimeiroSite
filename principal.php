@@ -36,7 +36,7 @@ $subTituloDoSite = "esportes e muito mais";
         $listaNoticia = criarLista();
         foreach($listaNoticia as $noticia):
         ?>
-        <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE')?>1">
+        <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>">
           <div class="categoryCard">
             <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
             <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>

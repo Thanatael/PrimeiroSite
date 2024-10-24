@@ -83,6 +83,7 @@ function criarLista() {
 
     foreach ($noticias as $noticia) {
         $listaNoticia[] = [
+            "id" => $noticia['id'],
             "titulo" => $noticia['titulo'],
             "descricao" => $noticia['descricaocurta'],
             "imagem" => $noticia['imagem'],
@@ -94,7 +95,7 @@ function criarLista() {
 }
 
   function buscarNoticias() {
-    $sql = "SELECT titulo, descricaocurta, imagem, href, descricao FROM noticia";
+    $sql = "SELECT  id, titulo, descricaocurta, imagem, href, descricao FROM noticia";
     
     $pdo = Database::conexao();
     $stmt = $pdo->prepare($sql);
@@ -141,7 +142,7 @@ function criarLista() {
         }
     }
         
-        function cadastrar($nome,$email,$peso,$altura,$imc,$classificacao)
+        function cadastrar($nome,$senha,$peso,$altura,$imc,$classificacao)
         {
             $sql = "INSERT INTO `imc` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
             VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
@@ -207,15 +208,35 @@ function criarLista() {
         return ($result)?true:false;
     }
 
-    function verificarLogin($email){
+    function verificarEmail($email){
         $pdo = Database::conexao();
         $sql = "SELECT `id`,`nome`,`login`,`senha`,`email` FROM registro WHERE `email` = '$email'";
         // var_dump($sql);die;
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
         $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $list;
+        return $list[0];
     }
+
+    function verificarLogin($email, $senha) {
+        $pdo = Database::conexao();
+    
+        $sql = "SELECT `id`, `nome`, `login`, `senha`, `email` FROM registro WHERE `email` = :email";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        
+        $stmt->execute();
+        
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user && validaSenha($senha, $user['senha'])) {
+            return $user;
+        }
+    
+        return null;
+    }
+    
 
     function validaSenha($senhaDigitada, $senhaBd){
         if(!$senhaDigitada || !$senhaBd){return false;}
@@ -277,4 +298,16 @@ function criarLista() {
         elseif ($msg === "exist") {
             echo "<script>alert('Esse email já existe.');</script>";
         }
+    }
+
+    function buscarNoticiaPorId($id)
+    {
+         if(!$id){return;}
+         $sql = "SELECT * FROM noticia WHERE `id` = :id";
+         $pdo = Database::conexao();
+         $stmt = $pdo->prepare($sql);
+         $stmt->bindParam(':id', $id);
+         $result = $stmt->execute();
+         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         return $result[0];
     }

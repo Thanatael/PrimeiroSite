@@ -50,6 +50,8 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
  $resposta = round(calcularImc($peso, $altura));
  $classificacao = classificarImc($resposta);
  
+ $noticia = null;
+
  timeZone();
  $data = dataAtual();
  $tituloDoSite = "BEM VINDO A INFOSPORTS!";
@@ -70,8 +72,8 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
 }elseif($paginaUrl === "cadastro"){
   if($telefone !== null && $senha !== null){
     resetPost();
-    $usuarioCadastrado = verificarLogin($email);
-    if($usuarioCadastrado){
+    $usuarioCriado = verificarEmail($email,$senha);
+    if($usuarioCriado){
       menssagem("exist");
     }else{
       registro($nome, $email, $telefone, $login, $senha);
@@ -90,13 +92,20 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
   }
 }elseif($paginaUrl === "login") {
   if ($email !== null && $senha !== null) {
-      $usuarioCadastrado = verificarLogin($email);
-      if ($usuarioCadastrado && validaSenha($email, $usuarioCadastrado['senha'])) {
-          registrarAcessoValido($usuarioCadastrado);
-          butaosair();
+      $usuarioCadastrado = verificarLogin($email, $senha);
+        if ($usuarioCadastrado && validaSenha($senha, $usuarioCadastrado['senha'])) {
+              registrarAcessoValido($usuarioCadastrado);
+              butaosair();
       }
   }
-} elseif ($paginaUrl === "sair") {
+}elseif($paginaUrl === "detalhe"){
+  if($_GET && isset($_GET['id'])){
+    $idNoticia = $_GET['id'];
+  }else{
+    $idNoticia = 0;
+  }
+  $noticia = buscarNoticiaPorId($idNoticia);
+}elseif ($paginaUrl === "sair") {
   limparSessao();
 }
 
@@ -116,6 +125,8 @@ if($paginaUrl === "principal"){
     include_once("noticia.php");
   }elseif($paginaUrl === "sucesso"){
     include_once("sucesso.php");
+  }elseif($paginaUrl === "detalhe"){
+    include_once("detalhe.php");
   }else{
     echo "404 Página não existe!";
   }
@@ -123,24 +134,3 @@ if($paginaUrl === "principal"){
   include_once("footer.php");
   ?>
  
- <!-- // if($paginaUrl === "principal"){
-  //   cadastrar($nome,$email,$peso,$altura,$resposta,$classificacao);
-  // }elseif($paginaUrl === "registro"){
-  //   cadastrarRegistro($nome, $email, $telefone,$login,$senha);
-  // }elseif($paginaUrl === "contato"){
-  //   cadastrarContato($nome,$sobrenome,$email,$telefone,$mensagem);
-  // }elseif($paginaUrl === "noticia"){
-  //   cadastrarNoticia($titulo,$imagem,$descricao);
-  // }elseif($paginaUrl === "login"){
-  //   $usuarioCadastrado = verificarLogin($login);
-  //   if(
-  //     $usuarioCadastrado &&
-  //     validaSenha($senha, $usuarioCadastrado['senha'])
-  //   ){
-  //       $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
-  //       $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
-  //       $_SESSION["usuario"]["status"] = 'logado';
-  //       registrarAcessoValido($usuarioCadastrado);
-  //   }
-  // // var_dump($_SESSION["usuario"]["status"]);die;
-  // } -->

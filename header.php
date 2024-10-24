@@ -8,8 +8,10 @@
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/temaescuro.css">
-  <link rel="stylesheet" href="css/index.css">
-  
+
+  <?php if($paginaUrl === "principal"):?>
+      <link rel="stylesheet" href="css/index.css">
+    <?php endif; ?>
     <?php if($paginaUrl === "contato"):?>
         <link rel="stylesheet" href="css/contato.css">
         <link rel="stylesheet" href="css/validacao-contato.css">
@@ -26,7 +28,7 @@
     <?php if($paginaUrl === "sucesso"):?>
         <link rel="stylesheet" href="css/login.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "paginas"):?>
+    <?php if($paginaUrl === "detalhe"):?>
       <link rel="stylesheet" href="css/paginas.css">
     <?php endif; ?>
 
