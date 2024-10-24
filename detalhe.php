@@ -1,10 +1,10 @@
-
-<div class="container">
+<body>
+    <div class="container">
         <header class="header">
             <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
             <div class="headerBtnGroup">
-                <?php include_once("menuTopo.php");?>
-                <div>
+              <?php include_once("menuTopo.php");?>
+              <div>
                     <input type="checkbox" class="check" id="chk" />
                 
                     <label class="label" for="chk">
@@ -20,23 +20,22 @@
                 <div class="line"></div>
             </div>
         </header>
-        <p class="sectionTitle" id="backToTop">BEM VINDO A INFOSPORTS!</p>
-        <p class="sectionDescription">Aqui é onde você encontra todos os itens mais novos e modernos do seu esporte
-            preferido.</p>
+        <p class="sectionTitle" id="backToTop"><?=$tituloDoSite?></p>
+        <p class="sectionDescription"><strong><?=$subTituloDoSite?></strong></p>
+        
         <section class="gridContainer">
             <div class="mainContent">
                 <div class="categoryCard">
-                    <img class="mainCardImg" src="<?=$noticia['imagem']?>" alt="mainCardImg">
+                    <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg">
                     <h1 class="mainCategoryCardTitle"><?=$noticia['titulo']?></h1>
-                    <p class="mainCategoryCardDescription" Align="justify">
-                    <?=$noticia['descricao']?>
-                    </p>
+                    <p class="mainCategoryCardDescription" Align="justify"><?=$noticia['descricao']?></p>
                 </div>
             </div>
         </section>
+
         <footer class="footer">
             <span>Info Sports</span>
             <a href="#backToTop" class="footerAnchor">VOLTAR PARA O TOPO</a>
         </footer>
-    </div>
-    
+</body>
+</html>

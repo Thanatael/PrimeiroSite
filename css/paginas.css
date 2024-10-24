@@ -49,9 +49,8 @@ body {
 }
 
 .mainCardImg {
-    width: 100%; 
-    height: auto;
-    max-width: 100%;
+    width: 1800px;
+    height: 800px;
 }
 
 .mainCategoryCardTitle {
