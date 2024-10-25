@@ -1,5 +1,5 @@
 <?php if(isset($_SESSION["usuario"]) && $_SESSION["usuario"]["status"] === 'logado'): ?>
-    <button class="navBtn"><a href=''>Perfil</a></button>
+    <button class="navBtn"><a href="<?='http://localhost/ThiagoS/?pagina=perfil'?>">Perfil</a></button>
 <?php endif;?>
 
 <button class="navBtn"><a href="<?='http://localhost/ThiagoS/?pagina=contato'?>">Contato</a></button>

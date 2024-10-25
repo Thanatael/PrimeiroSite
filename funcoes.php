@@ -236,7 +236,6 @@ function criarLista() {
     
         return null;
     }
-    
 
     function validaSenha($senhaDigitada, $senhaBd){
         if(!$senhaDigitada || !$senhaBd){return false;}
@@ -246,7 +245,7 @@ function criarLista() {
 
     function registrarAcessoValido($usuarioCadastrado){
         $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
-        $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
+        $_SESSION["usuario"]["login"] = $usuarioCadastrado['login'];
         $_SESSION["usuario"]["status"] = 'logado';
     }
 

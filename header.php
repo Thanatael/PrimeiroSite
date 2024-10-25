@@ -31,6 +31,12 @@
     <?php if($paginaUrl === "detalhe"):?>
       <link rel="stylesheet" href="css/paginas.css">
     <?php endif; ?>
+    <?php if($paginaUrl === "perfil"):?>
+      <link rel="stylesheet" href="css/login.css">
+    <?php endif; ?>
+    <?php if($paginaUrl === null):?>
+      <link rel="stylesheet" href="css/404.css">
+    <?php endif; ?>
 
   <script src="scripts/header.js" defer></script>
   <script src="scripts/validacao.js" defer></script>

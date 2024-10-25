@@ -1,3 +1,1 @@
-<?php
-    echo "ERROR 404"
-?>
+<h1>404 Página não existe!</h1>

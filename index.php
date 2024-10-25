@@ -127,8 +127,10 @@ if($paginaUrl === "principal"){
     include_once("sucesso.php");
   }elseif($paginaUrl === "detalhe"){
     include_once("detalhe.php");
+  }elseif($paginaUrl === "perfil"){
+    include_once("perfil.php");
   }else{
-    echo "404 Página não existe!";
+    include_once("404.php");
   }
   
   include_once("footer.php");
