@@ -77,7 +77,6 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
       menssagem("exist");
     }else{
       registro($nome, $email, $telefone, $login, $senha);
-      // menssagem("cadas");
       header('Location:'.constant("URL_LOCAL_SITE_PAGINA_SUCE"));
     }
   }
@@ -94,8 +93,8 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
   if ($email !== null && $senha !== null) {
       $usuarioCadastrado = verificarLogin($email, $senha);
         if ($usuarioCadastrado && validaSenha($senha, $usuarioCadastrado['senha'])) {
-              registrarAcessoValido($usuarioCadastrado);
-              butaosair();
+          registrarDadosUsuario($usuarioCadastrado);
+          butaosair();
       }
   }
 }elseif($paginaUrl === "detalhe"){
@@ -130,6 +129,7 @@ if($paginaUrl === "principal"){
   }elseif($paginaUrl === "perfil"){
     include_once("perfil.php");
   }else{
+    $paginaUrl = "404";
     include_once("404.php");
   }
   

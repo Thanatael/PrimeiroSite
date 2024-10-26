@@ -210,7 +210,7 @@ function criarLista() {
 
     function verificarEmail($email){
         $pdo = Database::conexao();
-        $sql = "SELECT `id`,`nome`,`login`,`senha`,`email` FROM registro WHERE `email` = '$email'";
+        $sql = "SELECT `id`,`nome`,`login`,`senha`,`email`,`telefone` FROM registro WHERE `email` = '$email'";
         // var_dump($sql);die;
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
@@ -221,7 +221,7 @@ function criarLista() {
     function verificarLogin($email, $senha) {
         $pdo = Database::conexao();
     
-        $sql = "SELECT `id`, `nome`, `login`, `senha`, `email` FROM registro WHERE `email` = :email";
+        $sql = "SELECT `id`, `nome`, `login`, `senha`, `email`, `telefone` FROM registro WHERE `email` = :email";
         
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
@@ -243,11 +243,25 @@ function criarLista() {
         return false;
     }
 
-    function registrarAcessoValido($usuarioCadastrado){
-        $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
-        $_SESSION["usuario"]["login"] = $usuarioCadastrado['login'];
-        $_SESSION["usuario"]["status"] = 'logado';
+    function registrarDadosUsuario($dadosUsuario) {
+        if (is_array($dadosUsuario)) {
+            $_SESSION["usuario"] = [
+                "nome" => $dadosUsuario['nome'] ?? null,
+                "login" => $dadosUsuario['login'] ?? null,
+                "email" => $dadosUsuario['email'] ?? null,
+                "telefone" => $dadosUsuario['telefone'] ?? null,
+                "status" => 'logado',
+            ];
+        } else {
+            throw new InvalidArgumentException('Os dados do usuário devem ser um array associativo.');
+        }
     }
+
+    // function registrarAcessoValido($usuarioCadastrado){
+    //     $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+    //     $_SESSION["usuario"]["login"] = $usuarioCadastrado['login'];
+    //     $_SESSION["usuario"]["status"] = 'logado';
+    // }
 
     function protegerTela(){
         if(

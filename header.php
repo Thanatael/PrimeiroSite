@@ -9,32 +9,37 @@
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/temaescuro.css">
 
-  <?php if($paginaUrl === "principal"):?>
+  <?php
+  $pagina = array("principal", "contato", "noticia", "cadastro", "login", "sucesso", "detalhe", "perfil");
+  ?>
+
+  <?php if($paginaUrl === $pagina[0]):?>
       <link rel="stylesheet" href="css/index.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "contato"):?>
+    <?php if($paginaUrl === $pagina[1]):?>
         <link rel="stylesheet" href="css/contato.css">
         <link rel="stylesheet" href="css/validacao-contato.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "noticia"):?>
+    <?php if($paginaUrl === $pagina[2]):?>
         <link rel="stylesheet" href="css/noticia.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "cadastro"):?>
+    <?php if($paginaUrl === $pagina[3]):?>
         <link rel="stylesheet" href="css/registro.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "login"):?>
+    <?php if($paginaUrl === $pagina[4]):?>
         <link rel="stylesheet" href="css/login.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "sucesso"):?>
+    <?php if($paginaUrl === $pagina[5]):?>
         <link rel="stylesheet" href="css/login.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "detalhe"):?>
+    <?php if($paginaUrl === $pagina[6]):?>
       <link rel="stylesheet" href="css/paginas.css">
     <?php endif; ?>
-    <?php if($paginaUrl === "perfil"):?>
-      <link rel="stylesheet" href="css/login.css">
+    <?php if($paginaUrl === $pagina[7]):?>
+      <link rel="stylesheet" href="css/perfil.css">
     <?php endif; ?>
-    <?php if($paginaUrl === null):?>
+
+    <?php if (!in_array($paginaUrl, $pagina)): ?> <!-- PAGINA DE ERRO -->
       <link rel="stylesheet" href="css/404.css">
     <?php endif; ?>
 

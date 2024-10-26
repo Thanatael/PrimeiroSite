@@ -3,5 +3,5 @@
 - usuarios com a mesma senha [Concluido]
 - Listas [Concluido]
 
-- Pagina de Perfil
+- Pagina de Perfil [Em processo]
 - Sugestão
