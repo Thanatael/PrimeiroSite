@@ -37,18 +37,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    column-gap: 50px;
+    gap: 20px;
+    column-gap: 20px;
     grid-area: mainContent;
 }
 
 .categoryCard {
-    width: 280px;
-    height: 430px;
-    border: 2px solid transparent;
+    width: 300px;
+    height: 400px;
+    border: 3px solid transparent;
     border-radius: 10px;
     transition: 0.5s;
     cursor: pointer;
+    padding: 10px;
 }
 
 .mainCardImg {
@@ -59,6 +60,10 @@
 
 .categoryCard:hover {
     border-color: #86a0cc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    width: 320px;
+    height: 430px;
 }
 
 .pag-link {
@@ -76,6 +81,8 @@
     font-size: 15px;
     color: #333;
     line-height: 1.5;
+    width: 300px;
+    height: 200px;
 }
 
 

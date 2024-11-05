@@ -87,7 +87,7 @@ function criarLista() {
             "titulo" => $noticia['titulo'],
             "descricao" => $noticia['descricaocurta'],
             "imagem" => $noticia['imagem'],
-            "href" => $noticia['href']
+            "categoria" => $noticia['categoria']
         ];
     }
 
@@ -95,7 +95,7 @@ function criarLista() {
 }
 
   function buscarNoticias() {
-    $sql = "SELECT  id, titulo, descricaocurta, imagem, href, descricao FROM noticia";
+    $sql = "SELECT  id, titulo, descricaocurta, imagem, categoria, descricao FROM noticias";
     
     $pdo = Database::conexao();
     $stmt = $pdo->prepare($sql);
@@ -192,17 +192,17 @@ function criarLista() {
         return ($result)?true:false;
     }
 
-    function noticia($titulo,$descricaocurta,$imagem,$href,$descricao)
+    function noticia($titulo,$descricaocurta,$imagem,$categoria,$descricao)
     {
-        $sql = "INSERT INTO `noticia` (`titulo`,`descricaocurta`,`imagem`,`href`,`descricao`)
-        VALUES(:titulo,:descricaocurta,:imagem,:href,:descricao)";
+        $sql = "INSERT INTO `noticias` (`titulo`,`descricaocurta`,`imagem`,`categoria`,`descricao`)
+        VALUES(:titulo,:descricaocurta,:imagem,:categoria,:descricao)";
 
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':descricaocurta', $descricaocurta);
         $stmt->bindParam(':imagem', $imagem);
-        $stmt->bindParam(':href', $href);
+        $stmt->bindParam(':categoria', $categoria);
         $stmt->bindParam(':descricao', $descricao);
         $result = $stmt->execute();
         return ($result)?true:false;
@@ -316,7 +316,7 @@ function criarLista() {
     function buscarNoticiaPorId($id)
     {
          if(!$id){return;}
-         $sql = "SELECT * FROM noticia WHERE `id` = :id";
+         $sql = "SELECT * FROM noticias WHERE `id` = :id";
          $pdo = Database::conexao();
          $stmt = $pdo->prepare($sql);
          $stmt->bindParam(':id', $id);

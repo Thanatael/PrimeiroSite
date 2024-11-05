@@ -4,7 +4,7 @@ https://github.com/dioramalho/projeto-PHP-ETE-1/tree/desenvolvimento
 
 https://github.com/dioramalho/projeto-PHP-ETE-1/commit/f73b2fd7bbeaf223012a0d9afa8dd5123f08802c
 
-
+http://localhost/ThiagoS/?pagina=principal
 
 
 

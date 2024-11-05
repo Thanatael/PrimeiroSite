@@ -33,8 +33,8 @@ $descricaocurta = ($_SERVER["REQUEST_METHOD"] == "POST"
 $imagem = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['imagem'])) ? $_POST['imagem'] : null;
 
-$href = ($_SERVER["REQUEST_METHOD"] == "POST"
-&& !empty($_POST['href'])) ? $_POST['href'] : null;
+$categoria = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['categoria'])) ? $_POST['categoria'] : null;
 
 $descricao = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['descricao'])) ? $_POST['descricao'] : null;
@@ -83,11 +83,12 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
 }elseif($paginaUrl === "contato"){
   if($msg !== null){
   contato($nome,$sobrenome,$email,$telefone,$msg);
+  header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
   }
 }elseif($paginaUrl === "noticia"){
   if($descricao !== null){
-  resetPost();
-  noticia($titulo,$descricaocurta,$imagem,$href,$descricao);
+  noticia($titulo,$descricaocurta,$imagem,$categoria,$descricao);
+  header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
   }
 }elseif($paginaUrl === "login") {
   if ($email !== null && $senha !== null) {

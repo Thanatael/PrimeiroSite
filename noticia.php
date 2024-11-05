@@ -50,8 +50,8 @@
 
                         <div class="input-box">
                             <div class="telefone">
-                            <label for="href"></label>
-                            <input type="text" placeholder="Href" id="href" name="href">
+                            <label for="categoria"></label>
+                            <input type="text" placeholder="Categoria" id="categoria" name="categoria">
                             <p id="tel-ajuda" class="msg-ajuda" style="display:none;">Insira um telefone válido. (11 números)</p>
                         </div>
                         </div>

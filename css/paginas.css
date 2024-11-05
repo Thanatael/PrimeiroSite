@@ -32,9 +32,10 @@ body {
 }
 
 .gridContainer {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
 }
 
 .categoryCard{
@@ -49,8 +50,8 @@ body {
 }
 
 .mainCardImg {
-    width: 1800px;
-    height: 800px;
+    width: 100%;
+    height: 50%;
 }
 
 .mainCategoryCardTitle {
