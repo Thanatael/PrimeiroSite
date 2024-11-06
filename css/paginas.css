@@ -9,10 +9,13 @@ body {
 }
 
 .container {
-    width: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.mainContent {
+    width: 80%;
 }
 
 .content {
@@ -32,21 +35,22 @@ body {
 }
 
 .gridContainer {
-    width: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
+    width: 100%;
+    display: flex;  
+    justify-content: space-between; 
+    gap: 25px;
 }
 
 .categoryCard{
-    width: calc(100% + 20px);
+    width: 100%;
     /* Ajuste a largura dos cards conforme necessário */
-    margin: 10px;
+    margin: 5px;
     padding: 20px;
     background-color: lightgrey;
     border: 5px solid #5167b2;
     text-align: center;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .mainCardImg {
@@ -66,3 +70,22 @@ body {
     font-size: 1rem;
 }
 
+.caixa {
+    width: 18%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.teste {
+    width: 90%;
+    height: 220px;
+    background-color: lightgray;
+    border: #5167b2 solid 5px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+}
