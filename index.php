@@ -1,7 +1,7 @@
 <?php
- include_once("configuracao.php");
- include_once("configuracao/conexao.php");
- include_once("funcoes.php");
+ include_once("./system/configuracao.php");
+ include_once("./configuracao/conexao.php");
+ include_once("./system/funcoes.php");
 
 $nome = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['nome'])) ? $_POST['nome'] : null;
@@ -109,7 +109,7 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
   limparSessao();
 }
 
-include_once("header.php");
+include_once("./system/header.php");
 if($paginaUrl === "principal"){
   include_once("principal.php");
 }elseif($paginaUrl === "contato"){
@@ -134,6 +134,6 @@ if($paginaUrl === "principal"){
     include_once("404.php");
   }
   
-  include_once("footer.php");
+  include_once("./system/footer.php");
   ?>
  

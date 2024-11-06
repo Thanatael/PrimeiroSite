@@ -11,10 +11,9 @@ $subTituloDoSite = "esportes e muito mais";
           <p id="logUser">Bem vindo! <?=$nomeUsuario?></p>
       <?php endif;?>
       <div class="headerBtnGroup">
-        <?php include_once("menuTopo.php");?>
+      <?php include_once("./system/menutopo.php");?>
         <div>
           <input type="checkbox" class="check" id="chk"/>
-
           <label class="label" for="chk">
             <i class="fas fa-moon"></i>
             <i class="fas fa-sun"></i>
@@ -36,13 +35,13 @@ $subTituloDoSite = "esportes e muito mais";
         $listaNoticia = criarLista();
         foreach($listaNoticia as $noticia):
         ?>
-        <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>">
-          <div class="categoryCard">
-            <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
-            <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
-            <p class="mainCategoryCardDescription"><?=$noticia['descricao']?></p>
-          </div>
-        </a>
+        <div class="categoryCard">
+          <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>">
+              <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
+              <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
+              <p class="mainCategoryCardDescription"><?=$noticia['descricao']?></p>
+          </a>
+        </div>
         <?php endforeach?>
 
       </div>

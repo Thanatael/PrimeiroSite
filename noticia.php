@@ -2,7 +2,7 @@
         <header class="header">
             <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
             <div class="headerBtnGroup">
-            <?php include_once("menuTopo.php");?>
+            <?php include_once("./system/menutopo.php");?>
                 <div>
                     <input type="checkbox" class="check" id="chk" />
                 

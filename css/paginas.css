@@ -32,14 +32,14 @@ body {
 }
 
 .gridContainer {
-    width: 70%;
+    width: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
 }
 
 .categoryCard{
-    width: calc(100% - 20px);
+    width: calc(100% + 20px);
     /* Ajuste a largura dos cards conforme necessário */
     margin: 10px;
     padding: 20px;
@@ -50,8 +50,11 @@ body {
 }
 
 .mainCardImg {
-    width: 100%;
-    height: 50%;
+    width: 100%; 
+    height: auto;
+    max-height: 60vh; 
+    object-fit: cover; 
+    border-radius: 10px;
 }
 
 .mainCategoryCardTitle {
@@ -62,3 +65,4 @@ body {
 .mainCategoryCardDescription {
     font-size: 1rem;
 }
+

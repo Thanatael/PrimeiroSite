@@ -16,6 +16,7 @@ body {
     position: absolute;
     flex-direction: column;
 }
+
 .label {
     background-color: #111;
     border-radius: 50px;

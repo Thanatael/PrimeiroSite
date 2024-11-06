@@ -3,7 +3,7 @@
         <header class="header">
             <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=principal'?>">InfoSports</a>
             <div class="headerBtnGroup">
-              <?php include_once("menuTopo.php");?>
+            <?php include_once("./system/menutopo.php");?>
               <div>
                     <input type="checkbox" class="check" id="chk" />
                 
@@ -31,6 +31,11 @@
                     <p class="mainCategoryCardDescription" Align="justify"><?=$noticia['descricao']?></p>
                 </div>
             </div>
+
+        <div>
+
+        </div>
+
         </section>
 
         <footer class="footer">

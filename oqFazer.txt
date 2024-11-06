@@ -1,7 +1,0 @@
-- Email não pode ser repetido no cadastro [Concluido]
-- Depois de se cadastrar ir para a tela de login [Concluido]
-- usuarios com a mesma senha [Concluido]
-- Listas [Concluido]
-
-- Pagina de Perfil [Em processo]
-- Sugestãoks
