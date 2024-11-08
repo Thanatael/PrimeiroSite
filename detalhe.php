@@ -33,18 +33,34 @@
             </div>
 
             <div class="caixa">
-                <div class="teste">
-                    <h2>Oi</h2>
+                <?php
+                    $listaNoticia = criarLista();
+                    $contador = 0;
+
+                    $aleatorias = array_rand($listaNoticia, 4); 
+
+                    if(count($aleatorias) < 4) {
+                        $aleatorias = array_pad($aleatorias, 4, null);
+                    }
+                
+                    foreach($aleatorias as $chave):
+                        if ($chave === null) continue;
+                        $noticia = $listaNoticia[$chave];
+                ?>
+                
+                <div class="sugestao">
+                        <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>" >
+                            <img src="<?=$noticia['imagem']?>" alt="secCardImg" class="secCardImg" widht=320px height=180px>
+                            <p class="secCategoryCardTitle"><?=$noticia['titulo']?></p>
+                            <p class="secCategoryCardDescription"><?=$noticia['descricao']?></p>
+                        </a>
                 </div>
-                <div class="teste">
-                    <h2>Oi</h2>
-                </div>
-                <div class="teste">
-                    <h2>Oi</h2>
-                </div>
-                <div class="teste">
-                    <h2>Oi</h2>
-                </div>
+
+                <?php 
+                        $contador++;
+                    endforeach;
+                ?>
+
             </div>
 
         </section>
