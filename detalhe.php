@@ -35,9 +35,20 @@
             <div class="caixa">
                 <?php
                     $listaNoticia = criarLista();
+                    $idAtual = getIdAtual();
                     $contador = 0;
 
+                    if ($idAtual !== null) {
+                        foreach ($listaNoticia as $key => $noticia) {
+                            if ($noticia['id'] == $idAtual) {
+                                unset($listaNoticia[$key]);
+                                break; // Para evitar remover mais de uma vez
+                            }
+                        }
+                    }
+
                     $aleatorias = array_rand($listaNoticia, 4); 
+                    
 
                     if(count($aleatorias) < 4) {
                         $aleatorias = array_pad($aleatorias, 4, null);
@@ -45,6 +56,7 @@
                 
                     foreach($aleatorias as $chave):
                         if ($chave === null) continue;
+
                         $noticia = $listaNoticia[$chave];
                 ?>
                 

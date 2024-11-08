@@ -69,8 +69,8 @@ body {
     margin-bottom: 10px;
 }
 
-.mainCategoryCardDescription {
-    font-size: 1rem;
+.categoryCard .mainCategoryCardDescription {
+    font-size: .5rem;
 }
 
 .caixa {

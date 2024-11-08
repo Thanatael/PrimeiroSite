@@ -324,3 +324,7 @@ function criarLista() {
          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
          return $result[0];
     }
+
+    function getIdAtual() {
+        return isset($_GET['id']) ? $_GET['id'] : null;
+    }
