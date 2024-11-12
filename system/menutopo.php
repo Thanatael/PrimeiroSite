@@ -4,6 +4,7 @@
 
 <button class="navBtn"><a href="<?='http://localhost/ThiagoS/?pagina=contato'?>">Contato</a></button>
 <button class="navBtn"><a href="<?='http://localhost/ThiagoS/?pagina=noticia'?>">Noticias</a></button>
+<button class="navBtn"><a href="<?=constant('URL_LOCAL_SITE_PAGINA').'cadastrar-categoria'?>">Categorias</a></button>
 
 <?php if (isset($_SESSION["usuario"]) && $_SESSION["usuario"]["status"] === 'logado'): ?>
     <button class="navBtn"><a href="<?= constant('URL_LOCAL_SITE_PAGINA').'sair' ?>">Sair</a></button>

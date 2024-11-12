@@ -42,8 +42,11 @@ $descricao = ($_SERVER["REQUEST_METHOD"] == "POST"
 $login = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['login'])) ? $_POST['login'] : null;
 
-$senha = ($_SERVER["REQUEST_METHOD"] == "POST"
+@$senha = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty(criptografia($_POST['senha']))) ? criptografia($_POST['senha']) : null;
+
+$nomeCategoria = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['nomeCategoria'])) ? $_POST['nomeCategoria'] : null;
 
  $resposta = 0;
 
@@ -105,9 +108,14 @@ $senha = ($_SERVER["REQUEST_METHOD"] == "POST"
     $idNoticia = 0;
   }
   $noticia = buscarNoticiaPorId($idNoticia);
+}elseif($paginaUrl === "cadastrar-categoria"){
+    if(!verificarCategoriaDuplicada($nomeCategoria)){
+      cadastrarCategoria($nomeCategoria);
+    }
 }elseif ($paginaUrl === "sair") {
   limparSessao();
 }
+
 
 include_once("./system/header.php");
 if($paginaUrl === "principal"){
@@ -129,9 +137,12 @@ if($paginaUrl === "principal"){
     include_once("detalhe.php");
   }elseif($paginaUrl === "perfil"){
     include_once("perfil.php");
+  }elseif($paginaUrl === "cadastrar-categoria"){
+    protegerTela();
+    include_once("categoria.php");
   }else{
     $paginaUrl = "404";
-    include_once("404.php");
+    include_once("./system/404.php");
   }
   
   include_once("./system/footer.php");

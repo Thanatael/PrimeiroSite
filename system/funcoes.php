@@ -328,3 +328,27 @@ function criarLista() {
     function getIdAtual() {
         return isset($_GET['id']) ? $_GET['id'] : null;
     }
+
+    
+    function cadastrarCategoria($nomeCategoria)
+    {
+        if(!$nomeCategoria){return;}
+        $sql = "INSERT INTO `categoria_tb` (`nome`)
+        VALUES(:nome)";
+
+        $pdo = Database::conexao();
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':nome', $nomeCategoria);
+        $result = $stmt->execute();
+        return ($result)?true:false;
+    }
+
+    function verificarCategoriaDuplicada($termo)
+  {
+      $pdo = Database::conexao();
+      $sql = "SELECT * FROM `categoria_tb` WHERE `nome` = '$termo'";
+      $stmt = $pdo->prepare($sql);
+      $list = $stmt->execute();
+      $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return ($list)?true:false;
+  }

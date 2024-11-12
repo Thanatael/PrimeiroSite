@@ -72,7 +72,7 @@ a {
 }
 
 form .campos .input-box {
-    width: calc(100% / 2 - 20px);
+    width: calc(100% - 20px);
     margin: 10px;
 }
 
