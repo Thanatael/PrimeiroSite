@@ -48,6 +48,9 @@ $login = ($_SERVER["REQUEST_METHOD"] == "POST"
 $nomeCategoria = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['nomeCategoria'])) ? $_POST['nomeCategoria'] : null;
 
+$pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['pesquisa'])) ? $_POST['pesquisa'] : null;
+
  $resposta = 0;
 
  $resposta = round(calcularImc($peso, $altura));
@@ -140,6 +143,8 @@ if($paginaUrl === "principal"){
   }elseif($paginaUrl === "cadastrar-categoria"){
     protegerTela();
     include_once("categoria.php");
+  }elseif($paginaUrl === "pesquisa"){
+    include_once("pesquisa.php");
   }else{
     $paginaUrl = "404";
     include_once("./system/404.php");

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/temaescuro.css">
 
   <?php
-  $pagina = array("principal", "contato", "noticia", "cadastro", "login", "sucesso", "detalhe", "perfil","cadastrar-categoria");
+  $pagina = array("principal", "contato", "noticia", "cadastro", "login", "sucesso", "detalhe", "perfil","cadastrar-categoria","pesquisa");
   ?>
 
   <?php if($paginaUrl === $pagina[0]):?>
@@ -41,6 +41,9 @@
     <?php if($paginaUrl === $pagina[8]):?>
         <link rel="stylesheet" href="css/contato.css">
         <link rel="stylesheet" href="css/validacao-contato.css">
+    <?php endif; ?>
+    <?php if($paginaUrl === $pagina[9]):?>
+      <link rel="stylesheet" href="css/login.css">
     <?php endif; ?>
 
     <?php if (!in_array($paginaUrl, $pagina)): ?> <!-- PAGINA DE ERRO -->

@@ -31,6 +31,18 @@ $subTituloDoSite = "esportes e muito mais";
     <p class="sectionDescription"><strong><?=$subTituloDoSite?></strong></p>
     <section class="gridContainer">
       <div class="mainContent">
+
+      <div class="search">
+        <div class="searchBox">
+            <form method="POST" action="#">
+            <input class="searchInt" name="pesquisa"  type="text" id="searchInput" placeholder="Pesquise por um tema..." />
+            <button class="searchBtn" type="submit">
+              <a href="<?=constant('URL_LOCAL_SITE_PAGINA').'pesquisa'?>">🔍</a>
+            </button>
+          </form>
+          </div>
+      </div>
+
         <?php 
         $listaNoticia = criarLista();
         foreach($listaNoticia as $noticia):
