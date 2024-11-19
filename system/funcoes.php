@@ -352,3 +352,13 @@ function criarLista() {
       $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return ($list)?true:false;
   }
+
+  function pesquisar($psq) {
+    $pdo = Database::conexao();
+    $sql = "SELECT * FROM noticias WHERE titulo LIKE '%$psq%' OR descricao LIKE
+    '%$psq%' OR categoria LIKE '%$psq%'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+  }

@@ -19,18 +19,39 @@
         <div class="line"></div>
       </div>
     </header>
-    <section>
-      <div class="box-content">
-        <form action="">
-          <h1>Cadastro realizado com sucesso!</h1>
-          <button class="btn-concluir">
-            <a class="logo" href="<?='http://localhost/ThiagoS/?pagina=login'?>">
-            Concluir
-            </a>
-        </button>
-        </form>
-      </div>
-    </section>
+    <section class="gridContainer">
+
+        <div class="mainContent">
+
+          <div class="search">
+            <div class="searchBox">
+              <form method="POST" action="#">
+                <input class="searchInt" name="pesquisa"  type="text" id="searchInput" placeholder="Pesquise por um tema..." />
+                <button class="searchBtn" type="submit">
+                  <a href="<?=constant('URL_LOCAL_SITE_PAGINA').'pesquisa'?>">🔍</a>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          </div>
+            <?php 
+
+            $listaNoticia = criarLista();
+            foreach($listaNoticia as $noticia):
+            ?>
+            <div class="categoryCard">
+              <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>">
+                  <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
+                  <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
+                  <p class="mainCategoryCardDescription"><?=$noticia['descricao']?></p>
+              </a>
+            </div>
+            <?php endforeach?>
+          </div>
+
+        </div>
+      </section>
     <footer class="footer">
       <span>Info Sports</span>
       <a href="#backToTop" class="footerAnchor">VOLTAR PARA O TOPO</a>

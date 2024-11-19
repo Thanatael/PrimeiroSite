@@ -43,7 +43,7 @@
         <link rel="stylesheet" href="css/validacao-contato.css">
     <?php endif; ?>
     <?php if($paginaUrl === $pagina[9]):?>
-      <link rel="stylesheet" href="css/login.css">
+      <link rel="stylesheet" href="css/pesquisa.css">
     <?php endif; ?>
 
     <?php if (!in_array($paginaUrl, $pagina)): ?> <!-- PAGINA DE ERRO -->
