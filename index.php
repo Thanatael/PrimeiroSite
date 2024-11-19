@@ -31,7 +31,7 @@ $descricaocurta = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['descricaocurta'])) ? $_POST['descricaocurta'] : null;
 
 $imagem = ($_SERVER["REQUEST_METHOD"] == "POST"
-&& !empty($_POST['imagem'])) ? $_POST['imagem'] : null;
+&& !empty($_POST['fileToUpload'])) ? $_POST['fileToUpload'] : null;
 
 $categoria = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['categoria'])) ? $_POST['categoria'] : null;
@@ -93,7 +93,9 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
   }
 }elseif($paginaUrl === "noticia"){
   if($descricao !== null){
-  noticia($titulo,$descricaocurta,$imagem,$categoria,$descricao);
+  $nomedaImagem = upload($imagem);
+
+  noticia($titulo,$descricaocurta,$nomedaImagem,$categoria,$descricao);
   header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
   }
 }elseif($paginaUrl === "login") {

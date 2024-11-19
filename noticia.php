@@ -25,7 +25,7 @@
                     <h2>Cadastre noiticias</h2>
                 </div>
 
-                <form method="POST" action="#">
+                <form method="POST" action="#" enctype="multipart/form-data">
 
                     <div class="campos">
                         <div class="input-box">
@@ -43,8 +43,8 @@
                         <div class="input-box">
                             <div class="email">
                             <label for="imagem"></label>
-                            <input type="text" placeholder="Imagem" id="imagem" name="imagem">
-                            <p id="email-ajuda" class="msg-ajuda" style="display:none;">Insira um email válido. Ex: abc@abc.com</p>
+                            <!-- <input type="text" id="imagem" name="imagem" placeholder="Imagem"> -->
+                            <input type="file" name="fileToUpload" id="fileToUpload">
                         </div>
                         </div>
 
