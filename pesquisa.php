@@ -26,7 +26,7 @@
           <div class="search">
             <div class="searchBox">
               <form method="POST" action="#">
-                <input class="searchInt" name="pesquisa"  type="text" id="searchInput" placeholder="Pesquise por um tema..." />
+                <input class="searchInt" name="pesquisa"  type="text" id="searchInput" placeholder="Pesquise por um tema..." value="<?=$pesquisa?>" />
                 <button class="searchBtn" type="submit">
                   <a href="<?=constant('URL_LOCAL_SITE_PAGINA').'pesquisa'?>">🔍</a>
                 </button>
@@ -36,17 +36,18 @@
 
           </div>
             <?php 
+              $resultado = pesquisar($pesquisa);
+              foreach ($resultado as $res):
 
-            $listaNoticia = criarLista();
-            foreach($listaNoticia as $noticia):
-            ?>
-            <div class="categoryCard">
-              <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>">
-                  <img src="<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
-                  <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
-                  <p class="mainCategoryCardDescription"><?=$noticia['descricao']?></p>
-              </a>
-            </div>
+            ?> 
+              <div class="categoryCard">
+                <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$res['id']?>">
+                    <img src="<?=$res['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
+                    <p class="mainCategoryCardTitle"><?=$res['titulo']?></p>
+                    <p class="mainCategoryCardDescription"><?=$res['descricaocurta']?></p>
+                </a>
+              </div>
+              
             <?php endforeach?>
           </div>
 

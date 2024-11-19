@@ -115,7 +115,12 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
     if(!verificarCategoriaDuplicada($nomeCategoria)){
       cadastrarCategoria($nomeCategoria);
     }
-}elseif ($paginaUrl === "sair") {
+}elseif($paginaUrl === "pesquisa"){
+  if($pesquisa !== null){
+  pesquisar($pesquisa);
+  }
+}
+elseif ($paginaUrl === "sair") {
   limparSessao();
 }
 

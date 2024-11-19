@@ -7,3 +7,6 @@
 - Sugestãoks
 
 - UPDATE `noticias` SET `imagem` = 'https://blog.rankingdetenis.com/wp-content/webpc-passthru.php?src=https://blog.rankingdetenis.com/wp-content/uploads/2021/12/chino-rocha-2FKTyJqfWX8-unsplash-1024x683.jpg&nocache=1' WHERE `noticias`.`id` = 13;
+
+
+- contador de cliques e recomenda-lo ( clique pada cada usuarios )
