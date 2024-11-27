@@ -1,7 +1,7 @@
 <?php
  include_once("./system/configuracao.php");
  include_once("./configuracao/conexao.php");
- include_once("./system/funcoes.php");
+ include_once("funcoes.php");
 
 $nome = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['nome'])) ? $_POST['nome'] : null;
@@ -129,29 +129,29 @@ elseif ($paginaUrl === "sair") {
 
 include_once("./system/header.php");
 if($paginaUrl === "principal"){
-  include_once("principal.php");
+  include_once("view/principal.php");
 }elseif($paginaUrl === "contato"){
     protegerTela();
-    include_once("contato.php");
+    include_once("view/contato.php");
   }elseif($paginaUrl === "login"){
     protegerLogin();
-    include_once("login.php");
+    include_once("view/login.php");
   }elseif($paginaUrl === "cadastro"){
-    include_once("cadastro.php");
+    include_once("view/cadastro.php");
   }elseif($paginaUrl === "noticia"){
     protegerTela();
-    include_once("noticia.php");
+    include_once("view/noticia.php");
   }elseif($paginaUrl === "sucesso"){
-    include_once("sucesso.php");
+    include_once("view/sucesso.php");
   }elseif($paginaUrl === "detalhe"){
-    include_once("detalhe.php");
+    include_once("view/detalhe.php");
   }elseif($paginaUrl === "perfil"){
-    include_once("perfil.php");
-  }elseif($paginaUrl === "cadastrar-categoria"){
+    include_once("view/perfil.php");
+  }elseif($paginaUrl === "view/cadastrar-categoria"){
     protegerTela();
-    include_once("categoria.php");
+    include_once("view/categoria.php");
   }elseif($paginaUrl === "pesquisa"){
-    include_once("pesquisa.php");
+    include_once("view/pesquisa.php");
   }else{
     $paginaUrl = "404";
     include_once("./system/404.php");

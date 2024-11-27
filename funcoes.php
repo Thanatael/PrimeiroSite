@@ -369,7 +369,7 @@ function criarLista() {
   }
 
   function upload($imagem){
-    if(!$_FILES["fileToUpload"]){return;}
+    if(!isset($_FILES["fileToUpload"])){return;}
 
     $target_dir = "assets/uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
