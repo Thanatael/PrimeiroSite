@@ -2,6 +2,7 @@
  include_once("./system/configuracao.php");
  include_once("./configuracao/conexao.php");
  include_once("funcoes.php");
+ include_once("model/acesso_model.php");
 
 $nome = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['nome'])) ? $_POST['nome'] : null;
@@ -75,17 +76,6 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
   resetPost();
   cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
   }
-}elseif($paginaUrl === "cadastro"){
-  if($telefone !== null && $senha !== null){
-    resetPost();
-    $usuarioCriado = verificarEmail($email,$senha);
-    if($usuarioCriado){
-      menssagem("exist");
-    }else{
-      registro($nome, $email, $telefone, $login, $senha);
-      header('Location:'.constant("URL_LOCAL_SITE_PAGINA_SUCE"));
-    }
-  }
 }elseif($paginaUrl === "contato"){
   if($msg !== null){
   contato($nome,$sobrenome,$email,$telefone,$msg);
@@ -100,9 +90,9 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
   }
 }elseif($paginaUrl === "login") {
   if ($email !== null && $senha !== null) {
-      $usuarioCadastrado = verificarLogin($email, $senha);
-        if ($usuarioCadastrado && validaSenha($senha, $usuarioCadastrado['senha'])) {
-          registrarDadosUsuario($usuarioCadastrado);
+        $usuarioCadastrado = acesso::verificarLogin($login);
+        if ($usuarioCadastrado && acesso::validaSenha($senha, $usuarioCadastrado['senha'])) {
+          acesso::registrarAcessoValido($usuarioCadastrado);
           butaosair();
       }
   }
@@ -123,40 +113,51 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
   }
 }
 elseif ($paginaUrl === "sair") {
-  limparSessao();
+  acesso::limparSessao();
 }
 
 
 include_once("./system/header.php");
 if($paginaUrl === "principal"){
   include_once("view/principal.php");
+
 }elseif($paginaUrl === "contato"){
-    protegerTela();
-    include_once("view/contato.php");
-  }elseif($paginaUrl === "login"){
-    protegerLogin();
-    include_once("view/login.php");
-  }elseif($paginaUrl === "cadastro"){
-    include_once("view/cadastro.php");
-  }elseif($paginaUrl === "noticia"){
-    protegerTela();
-    include_once("view/noticia.php");
-  }elseif($paginaUrl === "sucesso"){
-    include_once("view/sucesso.php");
-  }elseif($paginaUrl === "detalhe"){
-    include_once("view/detalhe.php");
-  }elseif($paginaUrl === "perfil"){
-    include_once("view/perfil.php");
-  }elseif($paginaUrl === "view/cadastrar-categoria"){
-    protegerTela();
-    include_once("view/categoria.php");
-  }elseif($paginaUrl === "pesquisa"){
-    include_once("view/pesquisa.php");
-  }else{
-    $paginaUrl = "404";
-    include_once("./system/404.php");
-  }
-  
+  acesso::protegerTela();
+  include_once("view/contato.php");
+
+}elseif($paginaUrl === "login"){
+  protegerLogin();
+  include_once("view/login.php");
+
+}elseif($paginaUrl === "cadastro"){
+  include_once("model/registro_model.php");
+  include_once("controller/registro_controller.php");
+
+}elseif($paginaUrl === "noticia"){
+  acesso::protegerTela();
+  include_once("view/noticia.php");
+
+}elseif($paginaUrl === "sucesso"){
+  include_once("view/sucesso.php");
+
+}elseif($paginaUrl === "detalhe"){
+  include_once("view/detalhe.php");
+
+}elseif($paginaUrl === "perfil"){
+  include_once("view/perfil.php");
+
+}elseif($paginaUrl === "cadastrar-categoria"){
+  acesso::protegerTela();
+  include_once("view/categoria.php");
+
+}elseif($paginaUrl === "pesquisa"){
+  include_once("view/pesquisa.php");
+
+}else{
+  $paginaUrl = "404";
+  include_once("./system/404.php");
+}
+
   include_once("./system/footer.php");
   ?>
  

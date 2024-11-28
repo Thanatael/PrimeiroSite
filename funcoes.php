@@ -159,23 +159,6 @@ function criarLista() {
             return ($result)?true:false;
         }
 
-        function registro($nome,$email,$telefone,$login,$senha)
-        {
-            if(!$nome || !$email || !$telefone || !$login || !$senha){return;}
-            $sql = "INSERT INTO `registro` (`nome`,`email`,`telefone`,`login`,`senha`)
-            VALUES(:nome,:email,:telefone,:login,:senha)";
-    
-            $pdo = Database::conexao();
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':telefone', $telefone);
-            $stmt->bindParam(':login', $login);
-            $stmt->bindParam(':senha', $senha);
-            $result = $stmt->execute();
-            return ($result)?true:false;
-        }
-
     function contato($nome,$sobrenome,$email,$telefone,$msg)
     {
         $sql = "INSERT INTO `contato` (`nome`,`sobrenome`,`email`,`telefone`,`msg`)
@@ -208,69 +191,25 @@ function criarLista() {
         return ($result)?true:false;
     }
 
-    function verificarEmail($email){
-        $pdo = Database::conexao();
-        $sql = "SELECT `id`,`nome`,`login`,`senha`,`email`,`telefone` FROM registro WHERE `email` = '$email'";
-        // var_dump($sql);die;
-        $stmt = $pdo->prepare($sql);
-        $list = $stmt->execute();
-        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $list[0];
-    }
-
-    function verificarLogin($email, $senha) {
-        $pdo = Database::conexao();
-    
-        $sql = "SELECT `id`, `nome`, `login`, `senha`, `email`, `telefone` FROM registro WHERE `email` = :email";
-        
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        
-        $stmt->execute();
-        
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($user && validaSenha($senha, $user['senha'])) {
-            return $user;
-        }
-    
-        return null;
-    }
-
-    function validaSenha($senhaDigitada, $senhaBd){
-        if(!$senhaDigitada || !$senhaBd){return false;}
-        if($senhaDigitada == $senhaBd){return true;}
-        return false;
-    }
-
-    function registrarDadosUsuario($dadosUsuario) {
-        if (is_array($dadosUsuario)) {
-            $_SESSION["usuario"] = [
-                "nome" => $dadosUsuario['nome'] ?? null,
-                "login" => $dadosUsuario['login'] ?? null,
-                "email" => $dadosUsuario['email'] ?? null,
-                "telefone" => $dadosUsuario['telefone'] ?? null,
-                "status" => 'logado',
-            ];
-        } else {
-            throw new InvalidArgumentException('Os dados do usuário devem ser um array associativo.');
-        }
-    }
+    // function registrarDadosUsuario($dadosUsuario) {
+    //     if (is_array($dadosUsuario)) {
+    //         $_SESSION["usuario"] = [
+    //             "nome" => $dadosUsuario['nome'] ?? null,
+    //             "login" => $dadosUsuario['login'] ?? null,
+    //             "email" => $dadosUsuario['email'] ?? null,
+    //             "telefone" => $dadosUsuario['telefone'] ?? null,
+    //             "status" => 'logado',
+    //         ];
+    //     } else {
+    //         throw new InvalidArgumentException('Os dados do usuário devem ser um array associativo.');
+    //     }
+    // }
 
     // function registrarAcessoValido($usuarioCadastrado){
     //     $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
     //     $_SESSION["usuario"]["login"] = $usuarioCadastrado['login'];
     //     $_SESSION["usuario"]["status"] = 'logado';
     // }
-
-    function protegerTela(){
-        if(
-            !$_SESSION || 
-            $_SESSION["usuario"]["status"] !== 'logado'
-        ){
-            header('Location:'.constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
-        }
-    }
 
     function protegerLogin(){
         if(
@@ -285,13 +224,7 @@ function criarLista() {
         // return hash('sha512',$senha);
         return hash('sha1',$senha);
     }
-
     
-    function limparSessao(){
-        unset($_SESSION["usuario"]);
-        header('Location:'.constant("URL_LOCAL_SITE_PAGINA_LOGIN"));
-    }
-
     function butaosair() {
         if (isset($_SESSION["usuario"]) && $_SESSION["usuario"]["status"] === 'logado') {
             return true;
