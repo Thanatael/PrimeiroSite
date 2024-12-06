@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="input-box">
-                            <textarea id="mensagem" placeholder="Digite aqui sua mensagem" name="msg" ></textarea>
+                            <textarea id="mensagem" placeholder="Digite aqui sua mensagem" name="mensagem" ></textarea>
                         </div>
 
                     </div>

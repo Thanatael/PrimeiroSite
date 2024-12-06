@@ -142,7 +142,7 @@ function criarLista() {
         }
     }
         
-        function cadastrar($nome,$senha,$peso,$altura,$imc,$classificacao)
+        function cadastrar($nome,$email,$peso,$altura,$imc,$classificacao)
         {
             $sql = "INSERT INTO `imc_tb` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
             VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
@@ -159,10 +159,10 @@ function criarLista() {
             return ($result)?true:false;
         }
 
-    function contato($nome,$sobrenome,$email,$telefone,$msg)
+    function contato($nome,$sobrenome,$email,$telefone,$mensagem)
     {
-        $sql = "INSERT INTO `contato_tb` (`nome`,`sobrenome`,`email`,`telefone`,`msg`)
-        VALUES(:nome,:sobrenome,:email,:telefone,:msg)";
+        $sql = "INSERT INTO `contato_tb` (`nome`,`sobrenome`,`email`,`telefone`,`mensagem`)
+        VALUES(:nome,:sobrenome,:email,:telefone,:mensagem)";
 
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
@@ -170,7 +170,7 @@ function criarLista() {
         $stmt->bindParam(':sobrenome', $sobrenome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':telefone', $telefone);
-        $stmt->bindParam(':msg', $msg);
+        $stmt->bindParam(':mensagem', $mensagem);
         $result = $stmt->execute();
         return ($result)?true:false;
     }

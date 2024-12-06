@@ -22,8 +22,8 @@ $altura = ($_SERVER["REQUEST_METHOD"] == "POST"
 $telefone = ($_SERVER["REQUEST_METHOD"] == "POST"
  && !empty($_POST['telefone'])) ? $_POST['telefone'] : null;
 
-$msg = ($_SERVER["REQUEST_METHOD"] == "POST"
-&& !empty($_POST['msg'])) ? $_POST['msg'] : null;
+$mensagem = ($_SERVER["REQUEST_METHOD"] == "POST"
+&& !empty($_POST['mensagem'])) ? $_POST['mensagem'] : null;
 
 $titulo = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['titulo'])) ? $_POST['titulo'] : null;
@@ -74,8 +74,8 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
   cadastrar($nome, $email, $peso, $altura, $resposta, $classificacao);
   }
 }elseif($paginaUrl === "contato"){
-  if($msg !== null){
-  contato($nome,$sobrenome,$email,$telefone,$msg);
+  if($mensagem !== null){
+  contato($nome,$sobrenome,$email,$telefone,$mensagem);
   header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
   }
 }elseif($paginaUrl === "noticia"){
