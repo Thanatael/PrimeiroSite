@@ -37,10 +37,6 @@
                         </div>
 
                         <div class="input-box">
-                            <input type="text" id="descricaocurta" placeholder="DescricaoCurta" name="descricaocurta">
-                        </div>
-
-                        <div class="input-box">
                             <div class="email">
                             <label for="imagem"></label>
                             <!-- <input type="text" id="imagem" name="imagem" placeholder="Imagem"> -->

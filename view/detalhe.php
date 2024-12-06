@@ -26,7 +26,7 @@
         <section class="gridContainer">
             <div class="mainContent">
                 <div class="categoryCard">
-                    <img src="assets/uploads/<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg">
+                    <img src="assets/uploads/<?=$noticia['img']?>" alt="mainCardImg" class="mainCardImg">
                     <h1 class="mainCategoryCardTitle"><?=$noticia['titulo']?></h1>
                     <p class="mainCategoryCardDescription" Align="justify"><?=$noticia['descricao']?></p>
                 </div>
@@ -46,8 +46,8 @@
                             }
                         }
                     }
-
-                    $aleatorias = array_rand($listaNoticia, 4); 
+                    $num_elements = count($listaNoticia);
+                    $aleatorias = array_rand($listaNoticia, min(4, $num_elements)); 
                     
 
                     if(count($aleatorias) < 4) {
@@ -62,7 +62,7 @@
                 
                 <div class="sugestao">
                         <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>" >
-                            <img src="assets/uploads/<?=$noticia['imagem']?>" alt="secCardImg" class="secCardImg" widht=320px height=180px>
+                            <img src="assets/uploads/<?=$noticia['img']?>" alt="secCardImg" class="secCardImg" widht=320px height=180px>
                             <p class="secCategoryCardTitle"><?=$noticia['titulo']?></p>
                             <p class="secCategoryCardDescription"><?=$noticia['descricao']?></p>
                         </a>

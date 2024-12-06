@@ -9,9 +9,9 @@ class Acesso
 
     }
 
-    public static function verificarLogin($login){
+    public static function verificarLogin($email){
         $pdo = Database::conexao();
-        $sql = "SELECT `id`,`nome`,`login`,`senha` FROM registro_tb WHERE `login` = '$login'";
+        $sql = "SELECT `id`,`nome`,`login`,`senha`,`email`, `telefone` FROM registro_tb WHERE `email` = '$email'";
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
         $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,6 +26,9 @@ class Acesso
 
     public static function registrarAcessoValido($usuarioCadastrado){
         $_SESSION["usuario"]["nome"] = $usuarioCadastrado['nome'];
+        $_SESSION["usuario"]["email"] = $usuarioCadastrado['email'];
+        $_SESSION["usuario"]["login"] = $usuarioCadastrado['login'];
+        $_SESSION["usuario"]["telefone"] = $usuarioCadastrado['telefone'];
         $_SESSION["usuario"]["id"] = $usuarioCadastrado['id'];
         $_SESSION["usuario"]["status"] = 'logado';
     }

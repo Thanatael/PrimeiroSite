@@ -68,9 +68,9 @@ class Registro
         return ($result)?true:false;
     }
 
-    public static function verificarLogin($login){
+    public static function verificarLogin($email){
         $pdo = Database::conexao();
-        $sql = "SELECT `id`,`nome`,`login`,`senha` FROM registro_tb WHERE `login` = '$login'";
+        $sql = "SELECT `id`,`nome`,`login`,`senha`,`email` FROM registro_tb WHERE `email` = '$email'";
         $stmt = $pdo->prepare($sql);
         $list = $stmt->execute();
         $list = $stmt->fetchAll(PDO::FETCH_ASSOC);

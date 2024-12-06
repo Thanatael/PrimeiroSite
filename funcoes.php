@@ -85,9 +85,9 @@ function criarLista() {
         $listaNoticia[] = [
             "id" => $noticia['id'],
             "titulo" => $noticia['titulo'],
-            "descricao" => $noticia['descricaocurta'],
-            "imagem" => $noticia['imagem'],
-            "categoria" => $noticia['categoria']
+            "descricao" => $noticia['descricao'],
+            "img" => $noticia['img'],
+            "categoria_id" => $noticia['categoria_id']
         ];
     }
 
@@ -95,7 +95,7 @@ function criarLista() {
 }
 
   function buscarNoticias() {
-    $sql = "SELECT  id, titulo, descricaocurta, imagem, categoria, descricao FROM noticias";
+    $sql = "SELECT  id, titulo, img, categoria_id, descricao FROM noticia_tb";
     
     $pdo = Database::conexao();
     $stmt = $pdo->prepare($sql);
@@ -115,7 +115,7 @@ function criarLista() {
   function imcBuscarPorId($id)
   {
       $pdo = Database::conexao();
-      $sql = "SELECT * FROM imc WHERE id = $id";
+      $sql = "SELECT * FROM imc_tb WHERE id = $id";
       $stmt = $pdo->prepare($sql);
       $list = $stmt->execute();
       $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -144,7 +144,7 @@ function criarLista() {
         
         function cadastrar($nome,$senha,$peso,$altura,$imc,$classificacao)
         {
-            $sql = "INSERT INTO `imc` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
+            $sql = "INSERT INTO `imc_tb` (`nome`,`email`,`peso`,`altura`,`imc`,`classificacao`)
             VALUES(:nome,:email,:peso,:altura,:imc,:classificacao)";
     
             $pdo = Database::conexao();
@@ -161,7 +161,7 @@ function criarLista() {
 
     function contato($nome,$sobrenome,$email,$telefone,$msg)
     {
-        $sql = "INSERT INTO `contato` (`nome`,`sobrenome`,`email`,`telefone`,`msg`)
+        $sql = "INSERT INTO `contato_tb` (`nome`,`sobrenome`,`email`,`telefone`,`msg`)
         VALUES(:nome,:sobrenome,:email,:telefone,:msg)";
 
         $pdo = Database::conexao();
@@ -175,16 +175,15 @@ function criarLista() {
         return ($result)?true:false;
     }
 
-    function noticia($titulo,$descricaocurta,$imagem,$categoria,$descricao)
+    function noticia($titulo,$img,$categoria,$descricao)
     {
-        $sql = "INSERT INTO `noticias` (`titulo`,`descricaocurta`,`imagem`,`categoria`,`descricao`)
-        VALUES(:titulo,:descricaocurta,:imagem,:categoria,:descricao)";
+        $sql = "INSERT INTO `noticia_tb` (`titulo`,`img`,`categoria_id`,`descricao`)
+        VALUES(:titulo,:img,:categoria,:descricao)";
 
         $pdo = Database::conexao();
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':descricaocurta', $descricaocurta);
-        $stmt->bindParam(':imagem', $imagem);
+        $stmt->bindParam(':img', $img);
         $stmt->bindParam(':categoria', $categoria);
         $stmt->bindParam(':descricao', $descricao);
         $result = $stmt->execute();
@@ -249,7 +248,7 @@ function criarLista() {
     function buscarNoticiaPorId($id)
     {
          if(!$id){return;}
-         $sql = "SELECT * FROM noticias WHERE `id` = :id";
+         $sql = "SELECT * FROM noticia_tb WHERE `id` = :id";
          $pdo = Database::conexao();
          $stmt = $pdo->prepare($sql);
          $stmt->bindParam(':id', $id);
@@ -288,8 +287,8 @@ function criarLista() {
 
   function pesquisar($psq) {
     $pdo = Database::conexao();
-    $sql = "SELECT * FROM `noticias` WHERE `titulo` = '%$psq%' OR `descricao` LIKE
-    '%$psq%' OR `categoria` LIKE '%$psq%'";
+    $sql = "SELECT * FROM `noticia_tb` WHERE `titulo` LIKE '%$psq%' OR `descricao` LIKE
+    '%$psq%'";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -301,7 +300,7 @@ function criarLista() {
     return date('Y').date('m').date('d').date("h").date(':i').'-'.date('sa').rand();
   }
 
-  function upload($imagem){
+  function upload($img){
     if(!isset($_FILES["fileToUpload"])){return;}
 
     $target_dir = "assets/uploads/";
@@ -335,8 +334,8 @@ function criarLista() {
 
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        && $imageFileType != "gif" && $imageFileType != "jfif") {
+        echo "Sorry, only JPG, JPEG, JFIF, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
 

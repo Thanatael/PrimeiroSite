@@ -42,9 +42,9 @@
             ?> 
               <div class="categoryCard">
                 <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$res['id']?>">
-                    <img src="<?=$res['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
+                    <img src="assets/uploads/<?=$res['img']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
                     <p class="mainCategoryCardTitle"><?=$res['titulo']?></p>
-                    <p class="mainCategoryCardDescription"><?=$res['descricaocurta']?></p>
+                    <p class="mainCategoryCardDescription"><?=$res['descricao']?></p>
                 </a>
               </div>
               

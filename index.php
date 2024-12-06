@@ -28,9 +28,6 @@ $msg = ($_SERVER["REQUEST_METHOD"] == "POST"
 $titulo = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['titulo'])) ? $_POST['titulo'] : null;
 
-$descricaocurta = ($_SERVER["REQUEST_METHOD"] == "POST"
-&& !empty($_POST['descricaocurta'])) ? $_POST['descricaocurta'] : null;
-
 $imagem = ($_SERVER["REQUEST_METHOD"] == "POST"
 && !empty($_POST['fileToUpload'])) ? $_POST['fileToUpload'] : null;
 
@@ -85,12 +82,12 @@ $pesquisa = ($_SERVER["REQUEST_METHOD"] == "POST"
   if($descricao !== null){
   $nomedaImagem = upload($imagem);
 
-  noticia($titulo,$descricaocurta,$nomedaImagem,$categoria,$descricao);
+  noticia($titulo,$nomedaImagem,$categoria,$descricao);
   header('Location:'.constant("URL_LOCAL_SITE_PAGINA_PRIN"));
   }
 }elseif($paginaUrl === "login") {
   if ($email !== null && $senha !== null) {
-        $usuarioCadastrado = acesso::verificarLogin($login);
+        $usuarioCadastrado = acesso::verificarLogin($email);
         if ($usuarioCadastrado && acesso::validaSenha($senha, $usuarioCadastrado['senha'])) {
           acesso::registrarAcessoValido($usuarioCadastrado);
           butaosair();

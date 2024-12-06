@@ -49,7 +49,7 @@ $subTituloDoSite = "esportes e muito mais";
         ?>
         <div class="categoryCard">
           <a class="pag-link" href="<?=constant('URL_LOCAL_SITE_DETALHE').$noticia['id']?>">
-              <img src="assets/uploads/<?=$noticia['imagem']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
+              <img src="assets/uploads/<?=$noticia['img']?>" alt="mainCardImg" class="mainCardImg" width=320px height=180px>
               <p class="mainCategoryCardTitle"><?=$noticia['titulo']?></p>
               <p class="mainCategoryCardDescription"><?=$noticia['descricao']?></p>
           </a>
