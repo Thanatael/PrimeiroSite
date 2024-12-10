@@ -34,7 +34,7 @@ $subTituloDoSite = "esportes e muito mais";
 
       <div class="search">
         <div class="searchBox">
-            <form method="POST" action="#">
+            <form method="POST" action="<?=constant('URL_LOCAL_SITE_PAGINA').'pesquisa'?>">
             <input class="searchInt" name="pesquisa"  type="text" id="pesquisa" placeholder="Pesquise por um tema..." />
             <button class="searchBtn" type="submit">
               <a href="<?=constant('URL_LOCAL_SITE_PAGINA').'pesquisa'?>">🔍</a>
